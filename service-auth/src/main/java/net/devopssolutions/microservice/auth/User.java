@@ -3,15 +3,15 @@ package net.devopssolutions.microservice.auth;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User implements UserDetails, Principal {
 
     @Id
     @GeneratedValue
@@ -32,8 +32,7 @@ public class User implements UserDetails {
 
     public User(String name, String password, String role) {
         this.name = name;
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
         this.role = role;
     }
 
@@ -95,9 +94,8 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setPassword(CharSequence password) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {
