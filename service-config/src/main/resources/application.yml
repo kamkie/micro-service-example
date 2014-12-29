@@ -1,0 +1,5 @@
+spring:
+  jmx:
+    enabled: true
+management:
+  context-path: /admin
