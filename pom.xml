@@ -21,6 +21,7 @@
         <java.version>1.8</java.version>
         <spring.bom.version>1.1.0.RELEASE</spring.bom.version>
         <spring.boot.version>1.2.0.RELEASE</spring.boot.version>
+        <spring.cloud.config.version>1.0.0.RC1</spring.cloud.config.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +39,16 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-client</artifactId>
+                <version>${spring.cloud.config.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>${spring.cloud.config.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -77,5 +88,15 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>http://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>
