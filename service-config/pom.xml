@@ -13,7 +13,7 @@
     <version>0.5-SNAPSHOT</version>
 
     <properties>
-        <mainClass>net.devopssolutions.mikroservice.config.BootConfig</mainClass>
+        <mainClass>net.devopssolutions.microservice.config.BootConfig</mainClass>
     </properties>
 
     <dependencies>

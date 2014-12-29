@@ -1,4 +1,4 @@
-package net.devopssolutions.mikroservice.auth;
+package net.devopssolutions.microservice.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @SpringApplicationConfiguration
-public class BootAuth extends SpringBootServletInitializer {
+class BootAuth extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(BootAuth.class, args);

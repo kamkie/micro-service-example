@@ -14,7 +14,7 @@
 
 
     <properties>
-        <mainClass>net.devopssolutions.mikroservice.auth.BootAuth</mainClass>
+        <mainClass>net.devopssolutions.microservice.auth.BootAuth</mainClass>
     </properties>
 
     <dependencies>

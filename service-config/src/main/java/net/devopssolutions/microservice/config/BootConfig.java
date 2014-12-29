@@ -1,4 +1,4 @@
-package net.devopssolutions.mikroservice.config;
+package net.devopssolutions.microservice.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @EnableConfigServer
 @SpringApplicationConfiguration
-public class BootConfig extends SpringBootServletInitializer {
+class BootConfig extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(BootConfig.class, args);
