@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringApplicationConfiguration
 @EntityScan
 @EnableJpaRepositories
-class BootAuth extends SpringBootServletInitializer {
+public class BootAuth extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(BootAuth.class, args);

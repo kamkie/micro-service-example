@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @EnableConfigServer
 @SpringApplicationConfiguration
-class BootConfig extends SpringBootServletInitializer {
+public class BootConfig extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(BootConfig.class, args);
