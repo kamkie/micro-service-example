@@ -4,7 +4,7 @@
 
     <groupId>net.devopssolutions.microservice</groupId>
     <artifactId>micro-service-example</artifactId>
-    <version>0.6.5</version>
+    <version>0.6.6-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <modules>
@@ -18,7 +18,7 @@
     <scm>
         <connection>scm:git:https://github.com/kamkie/mikro-service-example</connection>
         <url>https://github.com/kamkie/mikro-service-example</url>
-        <tag>micro-service-example</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
