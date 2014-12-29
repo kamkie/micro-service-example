@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.devopssolutions.mikroservice</groupId>
-    <artifactId>mikro-service-example</artifactId>
+    <artifactId>micro-service-example</artifactId>
     <version>0.5-SNAPSHOT</version>
 
     <packaging>pom</packaging>
