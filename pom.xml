@@ -23,7 +23,7 @@
 
     <properties>
         <release.repository>file://d:/Projects/maven-repository/</release.repository>
-        <site.url>file://d:/Projects/sites/${artifactId}-site/</site.url>
+        <site.url>file://d:/Projects/sites/${project.artifactId}-site/</site.url>
         <java.version>1.8</java.version>
         <spring.bom.version>1.1.0.RELEASE</spring.bom.version>
         <spring.boot.version>1.2.0.RELEASE</spring.boot.version>
