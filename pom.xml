@@ -112,6 +112,13 @@
                     <doUpdate>false</doUpdate>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <preparationGoals>clean install</preparationGoals>
+                    <tagNameFormat>@{project.artifactId}</tagNameFormat>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
