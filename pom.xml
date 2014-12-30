@@ -64,7 +64,7 @@
 
     <build>
         <!--suppress MavenModelInspection -->
-        <finalName>${project.artifactId}-${project.version}-r${buildNumber}-${scmBranch}</finalName>
+        <finalName>${project.artifactId}-${project.version}-${buildNumber}-${scmBranch}</finalName>
 
         <pluginManagement>
             <plugins>
