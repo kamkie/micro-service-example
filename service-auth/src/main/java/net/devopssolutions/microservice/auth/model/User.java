@@ -1,4 +1,4 @@
-package net.devopssolutions.microservice.auth;
+package net.devopssolutions.microservice.auth.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

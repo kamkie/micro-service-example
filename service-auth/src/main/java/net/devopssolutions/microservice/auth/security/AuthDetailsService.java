@@ -1,7 +1,7 @@
 package net.devopssolutions.microservice.auth.security;
 
-import net.devopssolutions.microservice.auth.User;
-import net.devopssolutions.microservice.auth.UserRepository;
+import net.devopssolutions.microservice.auth.model.User;
+import net.devopssolutions.microservice.auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

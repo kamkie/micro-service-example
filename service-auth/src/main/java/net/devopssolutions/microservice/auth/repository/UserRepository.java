@@ -1,5 +1,6 @@
-package net.devopssolutions.microservice.auth;
+package net.devopssolutions.microservice.auth.repository;
 
+import net.devopssolutions.microservice.auth.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
