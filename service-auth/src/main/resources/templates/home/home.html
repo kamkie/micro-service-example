@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html layout:decorator="layout/layout" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+<html layout:decorator="layout/layout" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Security Example </title>
+    <title>Home</title>
 </head>
 <body>
 <div layout:fragment="content">
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
-        This content is only shown to administrators.
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            This content is only shown to administrators.
+        </div>
+        <div sec:authorize="hasRole('ROLE_USER')">
+            This content is only shown to users.
+        </div>
+        <div>
+            Logged user: <span sec:authentication="name">user</span>
+            Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_FAKE]</span>
+        </div>
     </div>
-    <div sec:authorize="hasRole('ROLE_USER')">
-        This content is only shown to users.
-    </div>
-    <div>
-        Logged user: <span sec:authentication="name"></span>
-        Roles: <span sec:authentication="principal.authorities"></span>
+    <div th:if="${#authorization.expression('!isAuthenticated()')}">
+        <p>you are not login</p>
     </div>
 </div>
 </body>

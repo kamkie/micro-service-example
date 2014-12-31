@@ -20,10 +20,10 @@
                 <li><a href="#" th:href="@{/task}">Tasks</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#httpServletRequest.getUserPrincipal()} ? false : true">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}">
                     <a href="/login" th:href="@{/signin}">Sign in</a>
                 </li>
-                <li th:if="${#httpServletRequest.getUserPrincipal()} ? true">
+                <li th:if="${#authorization.expression('isAuthenticated()')}">
                     <a href="/logout" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
