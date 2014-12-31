@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8"/>
     <title>Spring Security Example</title>
 </head>
 <body>
-<form th:action="@{/logout}" method="post">
-    <div><input type="submit" value="Log out"/></div>
-</form>
+<div layout:fragment="content">
+    <form th:action="@{/logout}" method="post">
+        <div><input type="submit" value="Log out"/></div>
+    </form>
+</div>
 </body>
 </html>

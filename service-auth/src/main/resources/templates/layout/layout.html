@@ -4,22 +4,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css" th:href="@{/css/style.css}"/>
 
     <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
     <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Task List</title>
 </head>
 <body>
 <!--/* Standard layout can be mixed with Layout Dialect */-->
-<div th:replace="layout/header :: header">
-</div>
-<div id="container" class="container">
-    <div layout:fragment="content">
+<div th:replace="layout/header :: header"></div>
+<div class="container">
+    <div class="jumbotron">
+        <div th:text="${#httpServletRequest.getUserPrincipal()} ? ${#httpServletRequest.getUserPrincipal().getName()}">...</div>
+        <div layout:fragment="content"></div>
+        <div th:replace="layout/footer :: footer">&copy; 2014 The Static Templates</div>
     </div>
-    <div th:replace="layout/footer :: footer">&copy; 2014 The Static Templates</div>
 </div>
 <script type="application/javascript" src="/webjars/jquery/2.1.3/jquery.min.js"></script>
 <script type="application/javascript" src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="application/javascript" src="/js/script.js"></script>
+<script type="application/javascript" src="/public/js/script.js" th:src="@{/js/script.js}"></script>
 </body>
 </html>

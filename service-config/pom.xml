@@ -46,7 +46,7 @@
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
-                        <version>${springloaded.version}</version>
+                        <version>${spring.boot.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>

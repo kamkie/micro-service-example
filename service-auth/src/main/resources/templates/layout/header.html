@@ -3,15 +3,15 @@
 <head>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+<nav class="navbar navbar-fixed-top navbar-inverse" th:fragment="header">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">My project</a>
+            <a class="navbar-brand" href="https://github.com/kamkie/mikro-service-example">Microservice example</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -20,15 +20,15 @@
                 <li><a href="#" th:href="@{/task}">Tasks</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <!--<li th:if="${#authorization.expression('!isAuthenticated()')}">
+                <li th:if="${#httpServletRequest.getUserPrincipal()} ? false : true">
                     <a href="/login" th:href="@{/signin}">Sign in</a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                <li th:if="${#httpServletRequest.getUserPrincipal()} ? true">
                     <a href="/logout" th:href="@{/logout}">Logout</a>
-                </li>-->
+                </li>
             </ul>
         </div>
     </div>
-</div>
+</nav>
 </body>
 </html>

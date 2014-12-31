@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <title>Error page</title>
 </head>
 <body>
-<!--@thymesVar id="errorCode" type="String"-->
-<h1 th:text="${errorCode}">500</h1>
-<!--@thymesVar id="errorMessage" type="java.lang.Exception"-->
-<p th:text="${errorMessage}">java.lang.Exception</p>
-<!--@thymesVar id="errorTrace" type="String"-->
-<pre th:text="${errorTrace}">java.lang.Exception</pre>
+<div layout:fragment="content">
+    <!--@thymesVar id="errorCode" type="String"-->
+    <h1 th:text="${errorCode}">500</h1>
+    <!--@thymesVar id="errorMessage" type="String"-->
+    <p th:text="${errorMessage}">java.lang.Exception</p>
+    <!--@thymesVar id="errorTrace" type="String"-->
+    <pre th:text="${errorTrace}">java.lang.Exception</pre>
+</div>
 </body>
 </html>
