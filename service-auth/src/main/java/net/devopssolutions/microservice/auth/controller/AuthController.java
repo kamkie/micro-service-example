@@ -9,11 +9,11 @@ public class AuthController {
 
     @RequestMapping("/login")
     public ModelAndView login() {
-        return new ModelAndView("login");
+        return new ModelAndView("auth/login");
     }
 
-    @RequestMapping("/login-error")
-    public ModelAndView loginError() {
-        return new ModelAndView("login").addObject("loginError", true);
+    @RequestMapping("/logout")
+    public ModelAndView logout() {
+        return new ModelAndView("auth/logout");
     }
 }
