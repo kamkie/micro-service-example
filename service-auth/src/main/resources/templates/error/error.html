@@ -13,7 +13,10 @@
     <p th:text="${errorMessage}">java.lang.Exception</p>
 
     <div class="error" th:each="entry : ${error}">
-        <p th:text="${entry}">Onions</p>
+        <dl>
+            <dt th:text="${entry.key}">key</dt>
+            <dd th:text="${entry.value}">value</dd>
+        </dl>
     </div>
     <!--@thymesVar id="errorTrace" type="String"-->
     <pre th:text="${errorTrace}">java.lang.Exception</pre>
