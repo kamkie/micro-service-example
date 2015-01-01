@@ -6,4 +6,4 @@ eureka:
     nonSecurePort: ${server.port}
   client:
     serviceUrl:
-      defaultZone: http://user:${eureka.password}@127.0.0.1:8899/eureka/
+      defaultZone: http://user:${eureka.password}@127.0.0.1:8898/eureka/
