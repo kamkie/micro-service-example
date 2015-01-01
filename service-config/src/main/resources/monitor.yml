@@ -1,0 +1,5 @@
+server:
+  port: 8855
+security:
+  user:
+    password: password
