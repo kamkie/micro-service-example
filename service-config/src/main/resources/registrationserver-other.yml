@@ -1,0 +1,9 @@
+server:
+  port: 8898
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    nonSecurePort: ${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://user:${eureka.password}@127.0.0.1:8899/eureka/

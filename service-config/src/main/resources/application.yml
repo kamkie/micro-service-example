@@ -3,3 +3,10 @@ spring:
     enabled: true
 management:
   context-path: /admin
+eureka:
+  password: password
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

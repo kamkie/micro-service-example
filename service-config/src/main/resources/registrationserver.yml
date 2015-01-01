@@ -1,0 +1,5 @@
+server:
+  port: 8899
+security:
+  user:
+    password: ${eureka.password}
