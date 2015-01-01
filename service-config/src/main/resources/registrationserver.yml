@@ -6,6 +6,8 @@ security:
 eureka:
   instance:
     hostname: localhost
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
   client:
     registerWithEureka: false
     fetchRegistry: false
