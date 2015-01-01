@@ -4,6 +4,10 @@ spring:
 management:
   context-path: /admin
 eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
   client:
     region: default
     registryFetchIntervalSeconds: 5

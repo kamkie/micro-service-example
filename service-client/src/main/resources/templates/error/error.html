@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Error page</title>
+</head>
+<body>
+<header th:replace="layout/headerError :: header"></header>
+<div layout:fragment="content">
+    <!--@thymesVar id="errorCode" type="String"-->
+    <h1 th:text="${errorCode}">500</h1>
+    <!--@thymesVar id="errorMessage" type="String"-->
+    <p th:text="${errorMessage}">java.lang.Exception</p>
+
+    <div class="error" th:each="entry : ${error}">
+        <dl>
+            <dt th:text="${entry.key}">key</dt>
+            <dd th:text="${entry.value}">value</dd>
+        </dl>
+    </div>
+    <!--@thymesVar id="errorTrace" type="String"-->
+    <pre th:text="${errorTrace}">java.lang.Exception</pre>
+</div>
+</body>
+</html>

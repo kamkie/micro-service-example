@@ -1,2 +1,5 @@
 server:
   port: 8866
+security:
+  user:
+    password: password

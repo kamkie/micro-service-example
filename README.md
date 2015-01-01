@@ -1,2 +1,2 @@
-mikro-service-example
+micro-service-example
 =====================
