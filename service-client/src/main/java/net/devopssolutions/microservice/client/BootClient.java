@@ -8,7 +8,8 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.FeignClientScan;
-import org.springframework.cloud.netflix.ribbon.RibbonClients;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,7 +20,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @FeignClientScan
-@RibbonClients
+@EnableTurbine
+@EnableHystrixDashboard
 public class BootClient extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

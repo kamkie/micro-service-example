@@ -15,6 +15,6 @@ public class ConsumerController {
 
     @RequestMapping("/")
     public ResponseEntity<User> consume() {
-        return ResponseEntity.ok(userService.getUserByName("kamil"));
+        return ResponseEntity.ok(userService.getUserByName("user"));
     }
 }
