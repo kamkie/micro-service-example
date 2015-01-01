@@ -3,3 +3,9 @@ server:
 security:
   user:
     password: ${eureka.password}
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
