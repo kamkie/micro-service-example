@@ -49,13 +49,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--<dependency>-->
-                <!--<groupId>io.spring.platform</groupId>-->
-                <!--<artifactId>platform-bom</artifactId>-->
-                <!--<version>${spring.bom.version}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
-            <!--</dependency>-->
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring.bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-config-client</artifactId>
@@ -70,6 +70,11 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>springloaded</artifactId>
                 <version>${springloaded.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>jsr311-api</artifactId>
+                <version>1.1.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
