@@ -5,11 +5,16 @@
     <title>Error page</title>
 </head>
 <body>
+<header th:replace="layout/headerError :: header"></header>
 <div layout:fragment="content">
     <!--@thymesVar id="errorCode" type="String"-->
     <h1 th:text="${errorCode}">500</h1>
     <!--@thymesVar id="errorMessage" type="String"-->
     <p th:text="${errorMessage}">java.lang.Exception</p>
+
+    <div class="error" th:each="entry : ${error}">
+        <p th:text="${entry}">Onions</p>
+    </div>
     <!--@thymesVar id="errorTrace" type="String"-->
     <pre th:text="${errorTrace}">java.lang.Exception</pre>
 </div>

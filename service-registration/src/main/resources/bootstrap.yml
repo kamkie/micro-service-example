@@ -5,4 +5,4 @@ spring:
     name: registrationserver
   cloud:
     config:
-      uri: http://localhost:8888
+      enabled: false

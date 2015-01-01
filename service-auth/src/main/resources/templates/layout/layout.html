@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css" th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css}"/>
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" th:href="@{/css/style.css}"/>
 
     <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
@@ -11,7 +11,7 @@
 </head>
 <body>
 <!--/* Standard layout can be mixed with Layout Dialect */-->
-<div th:replace="layout/header :: header"></div>
+<header th:replace="layout/header :: header"></header>
 <div class="container">
     <div class="jumbotron">
         <div th:text="${#httpServletRequest.getUserPrincipal()} ? ${#httpServletRequest.getUserPrincipal().getName()}">...</div>

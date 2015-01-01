@@ -3,12 +3,19 @@ server:
 security:
   user:
     password: ${eureka.password}
+spring:
+  cloud:
+    config:
+      enabled: false
 eureka:
+  password: password
   instance:
+    leaseRenewalIntervalInSeconds: 10
     hostname: localhost
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
   client:
+    registryFetchIntervalSeconds: 5
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:

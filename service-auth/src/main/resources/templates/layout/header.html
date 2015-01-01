@@ -20,11 +20,11 @@
                 <li><a href="#" th:href="@{/task}">Tasks</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
-                    <a href="/login" th:href="@{/signin}">Sign in</a>
+                <li th:if="${#authentication}? ${#authorization.expression('!isAuthenticated()')} : true">
+                    <a href="/templates/auth/login.html" th:href="@{/login}">Sign in</a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
-                    <a href="/logout" th:href="@{/logout}">Logout</a>
+                <li th:if="${#authentication}? ${#authorization.expression('isAuthenticated()')}">
+                    <a href="/templates/auth/logout.html" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>

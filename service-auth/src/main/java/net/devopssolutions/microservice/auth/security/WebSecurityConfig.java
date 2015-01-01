@@ -31,6 +31,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
             http.antMatcher("/api/**");
 
+            http.csrf().disable();
+
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             http
@@ -48,6 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             http.antMatcher("/admin/**");
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+            http.csrf().disable();
 
             http
                     .authorizeRequests()

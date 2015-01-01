@@ -4,17 +4,12 @@ spring:
 management:
   context-path: /admin
 eureka:
-  password: password
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    metadataMap:
-      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
   client:
     region: default
     registryFetchIntervalSeconds: 5
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://user:password@localhost:8899/eureka/
+      defaultZone: http://user:${eureka.password:password}@localhost:8899/eureka/
     availabilityZones:
       default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
