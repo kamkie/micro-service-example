@@ -17,3 +17,7 @@ eureka:
       defaultZone: http://user:${eureka.password:password}@localhost:8899/eureka/
     availabilityZones:
       default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+services:
+  auth:
+    username: user
+    password: password
