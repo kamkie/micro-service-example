@@ -23,4 +23,6 @@ services:
     username: user
     password: password
 turbine:
+  aggregator:
+    clusterConfig: AUTHSERVER,CONFIGSERVER,MONITOR,CLIENT,REGISTRATIONSERVER
   appConfig: authserver,configserver,monitor,client,registrationserver
