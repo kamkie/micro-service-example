@@ -1,13 +1,14 @@
 spring:
   jmx:
     enabled: true
-management:
-  context-path: /admin
+#management:
+#  context-path: /admin
 eureka:
   instance:
+    cluster: DEFAULT
     leaseRenewalIntervalInSeconds: 10
-    statusPageUrlPath: /admin/info
-    healthCheckUrlPath: /admin/health
+#    statusPageUrlPath: /admin/info
+#    healthCheckUrlPath: /admin/health
   client:
     region: default
     registryFetchIntervalSeconds: 5
@@ -21,3 +22,5 @@ services:
   auth:
     username: user
     password: password
+turbine:
+  appConfig: authserver,configserver,monitor,client,registrationserver
