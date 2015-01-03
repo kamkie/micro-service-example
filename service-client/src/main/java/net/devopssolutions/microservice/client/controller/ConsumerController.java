@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class ConsumerController {
 
@@ -14,7 +16,11 @@ public class ConsumerController {
     UserService userService;
 
     @RequestMapping("/")
-    public ResponseEntity<User> consume() {
-        return ResponseEntity.ok(userService.getUserByName("user"));
+    public ResponseEntity<User> consume(HttpServletRequest request) {
+        String username = request.getRemoteUser();
+        if (username == null) {
+            username = "user";
+        }
+        return ResponseEntity.ok(userService.getUserByNameAuthFromRequest(username));
     }
 }

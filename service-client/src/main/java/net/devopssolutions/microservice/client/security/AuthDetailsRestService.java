@@ -15,7 +15,7 @@ public class AuthDetailsRestService implements UserDetailsService {
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.getUserByNameAuthFromRequest(username);
+        User user = userService.getUserByName(username);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("user %s not found", username));
         }

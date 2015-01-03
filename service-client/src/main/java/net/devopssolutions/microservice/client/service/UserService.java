@@ -5,26 +5,23 @@ import net.devopssolutions.microservice.client.model.User;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
 
 @Component
-@Scope("request")
 public class UserService {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     RestTemplate restTemplate;
-
-    @Autowired
-    HttpServletRequest request;
 
     @Value("${services.auth.username}")
     String username;
@@ -32,7 +29,7 @@ public class UserService {
     @Value("${services.auth.password}")
     String password;
 
-    public User getUserByNameAuthFromConfig(String name) {
+    public User getUserByName(String name) {
         return getUserByName(name, username, password);
     }
 
@@ -43,6 +40,8 @@ public class UserService {
 
     public User getUserByNameAuthFromRequest(String name) {
         HttpHeaders headers = new HttpHeaders();
+        ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = sra.getRequest();
         headers.set(HttpHeaders.AUTHORIZATION, request.getHeader(HttpHeaders.AUTHORIZATION));
 
         return getUserByName(name, headers);
