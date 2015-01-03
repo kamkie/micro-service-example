@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -17,12 +18,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
 
-@Component
+@Service
 public class UserService {
 
-    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    RestTemplate restTemplate;
+    UserServiceImpl userService;
 
     @Value("${services.auth.username}")
     String username;
@@ -53,22 +53,8 @@ public class UserService {
         return getUserByName(name, headers);
     }
 
-    @HystrixCommand(fallbackMethod = "defaultUsers")
     public User getUserByName(String name, HttpHeaders headers) {
-        return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
-    }
-
-    public User defaultUsers(String name, HttpHeaders headers) {
-        User user = null;
-        if ("user".equals(name)) {
-            user = User.newBuilder()
-                    .withName("user")
-                    .withRole("USER")
-                    .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
-                    .build();
-        }
-
-        return user;
+        return userService.getUserByName(name, headers);
     }
 
     private HttpHeaders getBasicAuthHeaders(String username, String password) {
@@ -78,4 +64,30 @@ public class UserService {
         headers.set(HttpHeaders.AUTHORIZATION, authHeader);
         return headers;
     }
+
+    @Component
+    public static class UserServiceImpl {
+        @SuppressWarnings("SpringJavaAutowiringInspection")
+        @Autowired
+        RestTemplate restTemplate;
+
+        @HystrixCommand(fallbackMethod = "defaultUsers")
+        public User getUserByName(String name, HttpHeaders headers) {
+            return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
+        }
+
+        public User defaultUsers(String name, HttpHeaders headers) {
+            User user = null;
+            if ("user".equals(name)) {
+                user = User.newBuilder()
+                        .withName("user")
+                        .withRole("USER")
+                        .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
+                        .build();
+            }
+
+            return user;
+        }
+    }
+
 }

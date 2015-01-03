@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(1)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/api/**");
+            http.antMatcher("/**");
 
             http.csrf().disable();
 
@@ -47,17 +47,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(2)
     public static class AdminWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/admin/**");
+            http.antMatcher("/hystrix.stream/**").anonymous();
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-            http.csrf().disable();
-
-            http
-                    .authorizeRequests()
-                    .anyRequest().hasRole("ADMIN")
-                    .and()
-                    .httpBasic();
         }
     }
 
