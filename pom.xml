@@ -19,8 +19,8 @@
 
 
     <scm>
-        <connection>scm:git:https://github.com/kamkie/mikro-service-example</connection>
-        <url>https://github.com/kamkie/mikro-service-example</url>
+        <connection>scm:git:https://github.com/kamkie/micro-service-example</connection>
+        <url>https://github.com/kamkie/micro-service-example</url>
         <tag>HEAD</tag>
     </scm>
 
