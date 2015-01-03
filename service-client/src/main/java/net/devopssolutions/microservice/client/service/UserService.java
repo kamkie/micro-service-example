@@ -35,10 +35,11 @@ public class UserService {
     public User defaultUsers(String name) {
         User user = null;
         if ("user".equals(name)) {
-            user = new User();
-            user.setName("user");
-            user.setRole("USER");
-            user.setPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK");
+            user = User.newBuilder()
+                    .withName("user")
+                    .withRole("USER")
+                    .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
+                    .build();
         }
 
         return user;
