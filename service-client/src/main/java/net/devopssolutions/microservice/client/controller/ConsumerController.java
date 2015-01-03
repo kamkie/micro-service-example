@@ -21,6 +21,6 @@ public class ConsumerController {
         if (username == null) {
             username = "user";
         }
-        return ResponseEntity.ok(userService.getUserByNameAuthFromRequest(username));
+        return ResponseEntity.ok(userService.getUserByName(username));
     }
 }

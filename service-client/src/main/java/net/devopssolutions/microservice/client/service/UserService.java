@@ -9,6 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -39,9 +40,14 @@ public class UserService {
     }
 
     public User getUserByNameAuthFromRequest(String name) {
-        HttpHeaders headers = new HttpHeaders();
         ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = sra.getRequest();
+        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        if (StringUtils.isEmpty(authHeader)) {
+            return getUserByName(name);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.AUTHORIZATION, request.getHeader(HttpHeaders.AUTHORIZATION));
 
         return getUserByName(name, headers);
@@ -49,10 +55,10 @@ public class UserService {
 
     @HystrixCommand(fallbackMethod = "defaultUsers")
     public User getUserByName(String name, HttpHeaders headers) {
-        return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity(headers), User.class, name).getBody();
+        return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
     }
 
-    public User defaultUsers(String name) {
+    public User defaultUsers(String name, HttpHeaders headers) {
         User user = null;
         if ("user".equals(name)) {
             user = User.newBuilder()
