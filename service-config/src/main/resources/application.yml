@@ -6,6 +6,8 @@ spring:
 eureka:
   instance:
     cluster: DEFAULT
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port:${random.value}}
     leaseRenewalIntervalInSeconds: 10
 #    statusPageUrlPath: /admin/info
 #    healthCheckUrlPath: /admin/health
