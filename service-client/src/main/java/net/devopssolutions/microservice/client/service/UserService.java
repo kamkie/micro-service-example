@@ -1,24 +1,30 @@
 package net.devopssolutions.microservice.client.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import net.devopssolutions.microservice.auth.api.User;
+import net.devopssolutions.microservice.client.model.User;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
 
 @Component
+@Scope("request")
 public class UserService {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    HttpServletRequest request;
 
     @Value("${services.auth.username}")
     String username;
@@ -26,9 +32,24 @@ public class UserService {
     @Value("${services.auth.password}")
     String password;
 
-    @HystrixCommand(fallbackMethod = "defaultUsers")
-    public User getUserByName(String name) {
+    public User getUserByNameAuthFromConfig(String name) {
+        return getUserByName(name, username, password);
+    }
+
+    public User getUserByName(String name, String username, String password) {
         HttpHeaders headers = getBasicAuthHeaders(username, password);
+        return getUserByName(name, headers);
+    }
+
+    public User getUserByNameAuthFromRequest(String name) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.AUTHORIZATION, request.getHeader(HttpHeaders.AUTHORIZATION));
+
+        return getUserByName(name, headers);
+    }
+
+    @HystrixCommand(fallbackMethod = "defaultUsers")
+    public User getUserByName(String name, HttpHeaders headers) {
         return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity(headers), User.class, name).getBody();
     }
 

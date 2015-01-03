@@ -1,6 +1,6 @@
 package net.devopssolutions.microservice.client.controller;
 
-import net.devopssolutions.microservice.auth.api.User;
+import net.devopssolutions.microservice.client.model.User;
 import net.devopssolutions.microservice.client.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
