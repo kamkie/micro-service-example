@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 @RestController
 public class ConsumerController {
@@ -22,5 +23,10 @@ public class ConsumerController {
             username = "user";
         }
         return ResponseEntity.ok(userService.getUserByName(username));
+    }
+
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+        return user;
     }
 }

@@ -64,6 +64,9 @@ public class User implements UserDetails, Principal {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> collection = new ArrayList<>();
+        if (getId() != null && !"user".equalsIgnoreCase(getRole())) {
+            collection.add(new SimpleGrantedAuthority("ROLE_USER"));
+        }
         if (getRole() != null) {
             collection.add(new SimpleGrantedAuthority("ROLE_" + getRole()));
         }
