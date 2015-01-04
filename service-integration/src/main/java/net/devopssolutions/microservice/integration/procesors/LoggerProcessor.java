@@ -20,7 +20,7 @@ public class LoggerProcessor implements Processor {
 
     @Value("${route.simple.to}")
     String uriTo;
-    
+
     @Value("${route.simple.something}")
     String something;
 

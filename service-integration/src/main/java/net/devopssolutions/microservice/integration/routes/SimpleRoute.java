@@ -1,7 +1,6 @@
 package net.devopssolutions.microservice.integration.routes;
 
 import net.devopssolutions.microservice.integration.procesors.LoggerProcessor;
-import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
