@@ -1,17 +1,24 @@
 package net.devopssolutions.microservice.security;
 
-//@Component
-public class AuthDetailsRestService { //implements UserDetailsService {
+import net.devopssolutions.microservice.model.User;
+import net.devopssolutions.microservice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
-//    @Autowired
-//    private RestTemplate restTemplate;
-//
-//    @Override
-//    public User loadUserByUsername(String username) throws UsernameNotFoundException {
-//        User user = restTemplate.getForEntity("http://authserver/api/users/getByName/{name}", User.class, username).getBody();
-//        if (user == null) {
-//            throw new UsernameNotFoundException(String.format("user %s not found", username));
-//        }
-//        return user;
-//    }
+@Component
+public class AuthDetailsRestService implements UserDetailsService {
+
+    @Autowired
+    private UserService userService;
+
+    @Override
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userService.getUserByNameAuthFromRequest(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("user %s not found", username));
+        }
+        return user;
+    }
 }

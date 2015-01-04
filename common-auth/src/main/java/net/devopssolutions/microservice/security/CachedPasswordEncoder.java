@@ -1,4 +1,4 @@
-package net.devopssolutions.microservice.auth.security;
+package net.devopssolutions.microservice.security;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

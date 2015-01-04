@@ -1,7 +1,7 @@
-package net.devopssolutions.microservice.client.service;
+package net.devopssolutions.microservice.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import net.devopssolutions.microservice.client.model.User;
+import net.devopssolutions.microservice.model.User;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
