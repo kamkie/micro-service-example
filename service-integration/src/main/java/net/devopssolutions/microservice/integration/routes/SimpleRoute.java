@@ -1,12 +1,43 @@
 package net.devopssolutions.microservice.integration.routes;
 
+import net.devopssolutions.microservice.integration.procesors.LoggerProcessor;
+import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 
+@Component
+@RefreshScope
 public class SimpleRoute extends RouteBuilder {
+
+    Logger logger = LoggerFactory.getLogger(SimpleRoute.class);
+
+    @Value("${route.simple.from}")
+    String uriFrom;
+
+    @Value("${route.simple.to}")
+    String uriTo;
+
+    @Autowired
+    LoggerProcessor loggerProcessor;
+
+    @Autowired
+    public SimpleRoute(CamelContext camelContext) {
+        super(camelContext);
+    }
 
     @Override
     public void configure() throws Exception {
-        from("{{route.simple.from}}").to("{{route.simple.to}}");
+        logger.info("from {} to {}", uriFrom, uriTo);
+
+        from(uriFrom)
+                .routeId(SimpleRoute.class.getCanonicalName())
+                .process(loggerProcessor)
+                .to(uriTo);
     }
 
 }
