@@ -1,4 +1,4 @@
-package net.devopssolutions.microservice.client;
+package net.devopssolutions.microservice.client.security;
 
 import net.devopssolutions.microservice.security.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
