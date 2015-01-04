@@ -3,7 +3,11 @@ spring:
     enabled: true
 #management:
 #  context-path: /admin
+security:
+  user:
+    password: "{cipher}AQBagZV6VJBR3tuScIAuUrnsMPh0hIMxy1qG326pU1PeWv8Bc+R8QexXUqbs9xFORaSPsrzOYkzg3mps8T75LiT9faJEWzorGw1/yTGYMZCm/mAp09MLxQ1JWcMLBDg7+rPPkFGjsSRNRKmloNw5mziq/q00b5+XyJ7Kn0/2SWGk9/JmN5tTeeIC0faCzLMvWIEHgz1ohTJQVp/Kpo26qoeLuQZIE6VvrGfqx+2+rC6BzR6zUL9/5Ol1t76T91eBoUzgI9CYhLeBte+SfppyCBMAp/dEKq55x+4YM0jvMazBKPTlQmWcQd4CIxkSJ+1v3urPvwFP/KQW2RLN9SI/Ehu1CVpyt/kHhVCUpYmRYGgr+ObEAKL61TtlWyzCR/8Qce8="
 eureka:
+  password: "{cipher}AQBaE3/+l7+h7S+CCieMZG4VU4RLEze/8IMp0oLsazK/3dGKCfMddlQuMHMTmTgesbbBmfsxu89Q1o5VbV7/2d7Mn2xHvtUwCLiNibPy+fVH9Tne+4vpTR2wsYKLq/w/eJ+CbRF03CKP2lxDJ6oPlqvasSqeSxW7NI+wtfRrkvI09qCwhIX2SGAK2A3zsT76nnTOzB9d6YO7WglPA6Wc2UdbVNbW+cSUH3b3Vcvok0D7xM/in/sRljQNXPVOHT8lenL1QO+/2B06kBLO0pLrsuB5166lQmXuXIi9R7WJLMHzoLOCLcDUYjrvd8KA6uMtfkz7R1SwDA4v0wABVz2f2eT3A9hbURI1A2a6CcWYR2SMcqIdsmYi1xLNo2rD4yIfCKo="
   instance:
     cluster: DEFAULT
     metadataMap:
@@ -17,13 +21,13 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://user:${eureka.password:password}@localhost:8899/eureka/
+      defaultZone: http://user:${eureka.password}@localhost:8899/eureka/
     availabilityZones:
       default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
 services:
   auth:
     username: user
-    password: password
+    password: "{cipher}AQAcRJIoSJlbvokxT+phkpQYMR1mCvRbAndhkpjLtnplmhqMhrIbijn6BiWXhaIknUVbz+D3kVdh3SkkJq7hB1yjigi0FXQ6Js4ZLSnn9Ns/rbRgtau+i/m0G7GfcfobjyYzkkB0Ta3q9+92rPSbSxKMZ4vQDry/UV2TH/xCDmdUovzMk+c8aPhoWm1fubyvlkx1hvaA1Ysn1hWuDAHlJkOPmjEsqZaVL/oNpc9Sp/tbvCxcO6+2K/EKnJDO3XP07knMS7+Vsf+Dluwj0glI+Bm1ZkMazfoxHbnzjitZwX24sAIiQHn5s4T4r1ClW5lhNLyVL1eEz88vHlJgFrOhcUSz/A5PKgN3ph8a17phFPAidHBj6r3RwN6g5RPBw/K95hE="
 turbine:
   aggregator:
     clusterConfig: AUTHSERVER,CONFIGSERVER,MONITOR,CLIENT,REGISTRATIONSERVER

@@ -3,6 +3,3 @@ spring:
     active: dev
   application:
     name: registrationserver
-  cloud:
-    config:
-      enabled: false

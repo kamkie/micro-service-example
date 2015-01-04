@@ -6,11 +6,11 @@ spring:
       enabled: false
   profiles:
     active: native
-#encrypt:
-#  failOnError: false
-#  keyStore:
-#    location: classpath:key_store.jks
-#    password: ${KEY_STORE_PASSWORD:foobar} # don't use a default in production
-#    alias: test
+encrypt:
+  failOnError: false
+  keyStore:
+    location: classpath:key_store.jks
+    password: ${KEY_STORE_PASSWORD:devops}
+    alias: devops
 server:
   port: 8888
