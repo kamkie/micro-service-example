@@ -36,7 +36,7 @@ public class HomeController {
         logger.info("=================================== refresh camel ===================================");
         logger.info("from {} to {}", uriFrom, uriTo);
 
-        routeRegistry.forEach((routeKey, routeBuilder) -> {
+        routeRegistry.getRoutes().forEach((routeKey, routeBuilder) -> {
             String routeId = routeKey.getCanonicalName();
             try {
                 camelContext.stopRoute(routeId);

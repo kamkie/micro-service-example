@@ -25,11 +25,6 @@ public class SimpleRoute extends RouteBuilder {
     @Autowired
     LoggerProcessor loggerProcessor;
 
-    @Autowired
-    public SimpleRoute(CamelContext camelContext) {
-        super(camelContext);
-    }
-
     @Override
     public void configure() throws Exception {
         logger.info("from {} to {}", uriFrom, uriTo);
