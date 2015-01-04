@@ -55,24 +55,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
-//    @Order(3)
-//    @Configuration
-//    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
-//            http
-//                    .authorizeRequests()
-//                    .antMatchers("/", "/home", "/webjars/**").permitAll()
-//                    .anyRequest().hasRole("USER")
-//                    .and()
-//                    .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .and()
-//                    .logout()
-//                    .permitAll();
-//        }
-//    }
-
 }
