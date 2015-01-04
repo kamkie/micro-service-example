@@ -175,6 +175,7 @@
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
+                    <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
                     <preparationGoals>clean install</preparationGoals>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
