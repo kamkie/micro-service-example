@@ -16,7 +16,7 @@ public class CachedPasswordEncoder implements PasswordEncoder {
     }
 
     @Override
-    @Cacheable(value = "passwords", unless = "#result != true")
+    @Cacheable(value = "passwordEncoder", unless = "#result != true")
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
