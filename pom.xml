@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.devopssolutions.microservice</groupId>
@@ -33,6 +34,7 @@
         <spring.boot.version>1.2.0.RELEASE</spring.boot.version>
         <spring.loaded.version>1.2.1.RELEASE</spring.loaded.version>
         <spring.cloud.version>1.0.0.RC1</spring.cloud.version>
+        <camel.version>2.15-SNAPSHOT</camel.version>
     </properties>
 
     <dependencyManagement>
@@ -58,11 +60,11 @@
                 <scope>import</scope>
             </dependency>
             <!--<dependency>-->
-                <!--<groupId>io.spring.platform</groupId>-->
-                <!--<artifactId>platform-bom</artifactId>-->
-                <!--<version>${spring.bom.version}</version>-->
-                <!--<type>pom</type>-->
-                <!--<scope>import</scope>-->
+            <!--<groupId>io.spring.platform</groupId>-->
+            <!--<artifactId>platform-bom</artifactId>-->
+            <!--<version>${spring.bom.version}</version>-->
+            <!--<type>pom</type>-->
+            <!--<scope>import</scope>-->
             <!--</dependency>-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -99,6 +101,16 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>jquery</artifactId>
                 <version>2.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-core</artifactId>
+                <version>${camel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-spring-boot</artifactId>
+                <version>${camel.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -195,6 +207,17 @@
             <url>http://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>apache.snapshots</id>
+            <name>Apache Development Snapshot Repository</name>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
