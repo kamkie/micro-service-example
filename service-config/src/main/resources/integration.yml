@@ -6,4 +6,4 @@ security:
 route:
   simple:
     from: file:source
-    to: file:destination
+    to: file:destination_12

@@ -1,11 +1,7 @@
-package net.devopssolutions.microservice.integration.rutes;
+package net.devopssolutions.microservice.integration.routes;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Component;
 
-@Component
-@RefreshScope
 public class SimpleRoute extends RouteBuilder {
 
     @Override
