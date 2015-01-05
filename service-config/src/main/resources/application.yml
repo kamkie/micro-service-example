@@ -3,9 +3,11 @@ spring:
     enabled: true
   boot:
     admin:
+      username: admin
+      password: "{cipher}AQBagZV6VJBR3tuScIAuUrnsMPh0hIMxy1qG326pU1PeWv8Bc+R8QexXUqbs9xFORaSPsrzOYkzg3mps8T75LiT9faJEWzorGw1/yTGYMZCm/mAp09MLxQ1JWcMLBDg7+rPPkFGjsSRNRKmloNw5mziq/q00b5+XyJ7Kn0/2SWGk9/JmN5tTeeIC0faCzLMvWIEHgz1ohTJQVp/Kpo26qoeLuQZIE6VvrGfqx+2+rC6BzR6zUL9/5Ol1t76T91eBoUzgI9CYhLeBte+SfppyCBMAp/dEKq55x+4YM0jvMazBKPTlQmWcQd4CIxkSJ+1v3urPvwFP/KQW2RLN9SI/Ehu1CVpyt/kHhVCUpYmRYGgr+ObEAKL61TtlWyzCR/8Qce8="
       url: http://localhost:8855
-#management:
-#  context-path: /admin
+management:
+  context-path: /admin
 security:
   user:
     password: "{cipher}AQBagZV6VJBR3tuScIAuUrnsMPh0hIMxy1qG326pU1PeWv8Bc+R8QexXUqbs9xFORaSPsrzOYkzg3mps8T75LiT9faJEWzorGw1/yTGYMZCm/mAp09MLxQ1JWcMLBDg7+rPPkFGjsSRNRKmloNw5mziq/q00b5+XyJ7Kn0/2SWGk9/JmN5tTeeIC0faCzLMvWIEHgz1ohTJQVp/Kpo26qoeLuQZIE6VvrGfqx+2+rC6BzR6zUL9/5Ol1t76T91eBoUzgI9CYhLeBte+SfppyCBMAp/dEKq55x+4YM0jvMazBKPTlQmWcQd4CIxkSJ+1v3urPvwFP/KQW2RLN9SI/Ehu1CVpyt/kHhVCUpYmRYGgr+ObEAKL61TtlWyzCR/8Qce8="
@@ -16,8 +18,8 @@ eureka:
     metadataMap:
       instanceId: ${spring.application.name}:${server.port:${random.value}}
     leaseRenewalIntervalInSeconds: 10
-#    statusPageUrlPath: /admin/info
-#    healthCheckUrlPath: /admin/health
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
   client:
     region: default
     registryFetchIntervalSeconds: 5
@@ -35,3 +37,9 @@ turbine:
   aggregator:
     clusterConfig: AUTHSERVER,CONFIGSERVER,MONITOR,CLIENT,REGISTRATIONSERVER
   appConfig: authserver,configserver,monitor,client,registrationserver
+info:
+  os: ${os.name}
+  name: ${spring.application.name}
+logging:
+  level: INFO
+  path: /

@@ -85,6 +85,13 @@ public class UserService {
                         .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
                         .build();
             }
+            if ("admin".equals(name)) {
+                user = User.newBuilder()
+                        .withName("admin")
+                        .withRole("ADMIN")
+                        .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
+                        .build();
+            }
 
             return user;
         }

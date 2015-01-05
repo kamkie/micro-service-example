@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(2)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/api/**");
+            http.antMatcher("/**");
 
             http.csrf().disable();
 
@@ -49,30 +49,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(1)
     public static class AdminWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/**").anonymous();
+            http.antMatcher("/admin/**");
+
+            http.csrf().disable();
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        }
-    }
 
-//    @Order(3)
-//    @Configuration
-//    public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-//
-//        @Override
-//        protected void configure(HttpSecurity http) throws Exception {
+            http.anonymous();
 //            http
 //                    .authorizeRequests()
-//                    .antMatchers("/", "/home", "/webjars/**").permitAll()
 //                    .anyRequest().hasRole("USER")
 //                    .and()
-//                    .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .and()
-//                    .logout()
-//                    .permitAll();
-//        }
-//    }
+//                    .httpBasic();
+        }
+    }
 
 }

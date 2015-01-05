@@ -57,11 +57,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             http.csrf().disable();
 
-            http
-                    .authorizeRequests()
-                    .anyRequest().hasRole("ADMIN")
-                    .and()
-                    .httpBasic();
+            http.anonymous();
+//            http
+//                    .authorizeRequests()
+//                    .anyRequest().hasRole("ADMIN")
+//                    .and()
+//                    .httpBasic();
         }
     }
 

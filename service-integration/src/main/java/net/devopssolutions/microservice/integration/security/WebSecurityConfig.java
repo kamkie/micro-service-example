@@ -49,9 +49,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(1)
     public static class AdminWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/hystrix.stream/**").anonymous();
+            http.antMatcher("/admin/**");
+
+            http.csrf().disable();
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+            http.anonymous();
+//            http
+//                    .authorizeRequests()
+//                    .anyRequest().hasRole("USER")
+//                    .and()
+//                    .httpBasic();
         }
     }
 

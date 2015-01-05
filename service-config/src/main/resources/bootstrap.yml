@@ -6,6 +6,8 @@ spring:
       enabled: false
   profiles:
     active: native
+logging:
+  file: config.log
 encrypt:
   failOnError: false
   keyStore:
