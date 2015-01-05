@@ -1,5 +1,6 @@
 package net.devopssolutions.microservice.monitor;
 
+import de.codecentric.boot.admin.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringApplicationConfiguration
 @EnableDiscoveryClient
 @EnableHystrixDashboard
+@EnableAdminServer
 public class BootMonitor extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HystrixController {
 
-    @RequestMapping("/")
-    public String home() {
-        return "forward:/hystrix";
-    }
+//    @RequestMapping("/")
+//    public String home() {
+//        return "forward:/hystrix";
+//    }
 }

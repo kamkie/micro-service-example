@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(2)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/**");
+            http.antMatcher("/api/**");
 
             http.csrf().disable();
 
@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Order(1)
     public static class AdminWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/hystrix.stream/**").anonymous();
+            http.antMatcher("/**").anonymous();
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         }

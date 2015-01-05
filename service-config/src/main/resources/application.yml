@@ -1,6 +1,9 @@
 spring:
   jmx:
     enabled: true
+  boot:
+    admin:
+      url: http://localhost:8855
 #management:
 #  context-path: /admin
 security:
