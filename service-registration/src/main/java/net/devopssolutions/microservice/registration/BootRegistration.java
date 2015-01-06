@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableAutoConfiguration
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = "net.devopssolutions.microservice")
 @EnableEurekaServer
 @EnableDiscoveryClient
 @SpringApplicationConfiguration
