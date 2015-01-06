@@ -18,7 +18,7 @@ public class ConfigRefresher {
     @Autowired
     RefreshEndpoint refreshEndpoint;
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 100000)
     public void refreshConfig() {
         logger.info("============ refreshing config =============");
         String[] changes = refreshEndpoint.refresh();
