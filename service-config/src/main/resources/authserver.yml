@@ -6,3 +6,5 @@ spring:
     url: jdbc:mysql://localhost/test
     username: root
     password: "{cipher}AQBo6QTlnd9jUtfAJpXW6MSuHKGazUNbjoQbKHt/2UEsosAM6HYzH1aJXsb0UDRl1Tn8Ev/Jh4tqs+/+q7n8/D3slAhoERtMqor81YsKMYVOUoXGzLeRQW5jZ/5iX+Ob5iqWSfGvZB4CFVsh+8JkysNemrC62VpY0O+Du/yeta1p8RkULv3ZIl8GGMbpzt66mJ4npwD+pY808iapSuL757NAxaxd6Ol2ByDX4dcGbHmUjY/5vETmBTg9OMAqyeFh70LZHP9f+6wLfoVR+nCggPWDW7GNPenvHRjDdP3iirFO4QuzWUjrYGTPxaOGt2JnkwwAy+diiRE6ztKvkm42500S9sNsyezPy0GCKhgoG7/npFCjhoIo6a8wzBcgC86d814="
+logging:
+  file: logs/service-auth.log

@@ -6,5 +6,3 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-logging:
-  file: authserver.log

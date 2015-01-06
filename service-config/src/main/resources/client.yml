@@ -3,3 +3,5 @@ server:
 security:
   user:
     password: "{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk="
+logging:
+  file: logs/service-client.log

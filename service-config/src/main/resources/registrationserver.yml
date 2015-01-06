@@ -23,3 +23,5 @@ eureka:
       defaultZone: http://${eureka.domain}:${server.port}/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
+logging:
+  file: logs/service-registration.log

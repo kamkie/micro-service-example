@@ -6,8 +6,6 @@ spring:
       enabled: false
   profiles:
     active: native
-logging:
-  file: config.log
 encrypt:
   failOnError: false
   keyStore:
@@ -16,3 +14,5 @@ encrypt:
     alias: devops
 server:
   port: 8888
+logging:
+  file: logs/service-config.log

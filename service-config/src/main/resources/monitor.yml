@@ -3,3 +3,5 @@ server:
 security:
   user:
     password: "{cipher}AQCNoyM42ZW3YH2YBC0FcOp5stjgZyJwPt5OQp8YEb8SmhWOecuHdHKbdz9Lmk8cYvNdTpe1SggZNNUr2019eGNV04fZwjys5V4Spm3sUiZUDRdIS5wKtXnv2HBEzPqDPkttbbOZq5ULxQEW1wNNbgXzgwouFtwD+MgzFHfT217wmrrZ6hYhXLX+R0alfBiAb3G7ezcd9t6F20Dsnxyh+MR27e0FuGt/QyF/up2O/OC6OIIF2rrpmq0xOWA3UvOVZjplkP0HBuPYKgJ+ZJdvxuKOPdX2Vqb5J1PcZng1/MiFoDAfDi25N9H1rvFGZCbC/av6UuPo963+ygSVnlboIypl+9SLiF/+CjBxWJ+6aJ1w22wUihsacGlwc7edaTOzJQE="
+logging:
+  file: logs/service-monitor.log

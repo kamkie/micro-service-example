@@ -8,3 +8,5 @@ route:
     from: file:source2
     to: file:destination_21
     something: something3
+logging:
+  file: logs/service-integration.log

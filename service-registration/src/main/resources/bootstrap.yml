@@ -3,5 +3,3 @@ spring:
     active: dev
   application:
     name: registrationserver
-logging:
-  file: registrationserver.log
