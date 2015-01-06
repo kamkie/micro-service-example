@@ -20,48 +20,17 @@ public class HomeController {
     @Autowired
     CamelContext camelContext;
 
-    @Autowired
-    RouteRegistry routeRegistry;
-
-    @Value("${route.simple.from}")
-    String uriFrom;
-
-    @Value("${route.simple.to}")
-    String uriTo;
-
-
     @RequestMapping("/")
     public String refresh() {
         StringBuilder stringBuilder = new StringBuilder();
-        logger.info("=================================== refresh camel ===================================");
-        logger.info("from {} to {}", uriFrom, uriTo);
-
-        routeRegistry.getRoutes().forEach((routeKey, routeBuilder) -> {
-            String routeId = routeKey.getCanonicalName();
-            try {
-                camelContext.stopRoute(routeId);
-                camelContext.removeRoute(routeId);
-                camelContext.addRoutes(routeBuilder);
-                camelContext.startRoute(routeId);
-            } catch (Exception e) {
-                logger.error("could not refresh camel route {}", e, routeId);
-            }
-        });
-
-        logger.info("=================================== after reload ===================================");
-        logger.info("printRoutes after reload");
-        printRoutes(stringBuilder);
-
-        return stringBuilder.toString();
-    }
-
-    void printRoutes(StringBuilder stringBuilder) {
         for (Route route : camelContext.getRoutes()) {
             String routeStr = String.format("route id %s from %s", route.getId(),
                     route.getEndpoint().getEndpointUri());
             logger.info(routeStr);
             stringBuilder.append(routeStr);
         }
+
+        return stringBuilder.toString();
     }
 
 }
