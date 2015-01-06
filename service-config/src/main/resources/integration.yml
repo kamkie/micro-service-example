@@ -5,8 +5,8 @@ security:
     password: "{cipher}AQBV+wjUxTodvuQpW95CW9z4IokYTUFkX6gYL32s3ZnTCEXTONot82uMEmleiuxkChPzlbPU3MmKFb1+6drYxRqduDLuXM/WBoe1EHKkYttVd+SQD5GCGwlqK6Hx94/hkjPl3Whb9pR1ibHakdqSDwJZvrsAT5lAut0SyUNTcOw3tqNX39gPc+4nwgZkkdUNX4d+UCEt9kVSMPFCwlvhyDpDgjEqnzJoGRBjRjiPZvcorF/21e7QuDnVVIlUOA9JSq8k7M6ZimntbEv8JdWkVWdUuFm07wFixNtXUVdZ5JcRsUFhhwCmWlkbB7d+wrH73FBnePp1OwgWastpwS9Tu8qAggg5VjucusZyDvgB/aP0NlCtoQgqiaSyuqpDVNiTZVA="
 route:
   simple:
-    from: file:source2
-    to: file:destination_21
-    something: something3
+    from: file:source
+    to: file:destination
+    something: something
 logging:
   file: logs/service-integration.log

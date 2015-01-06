@@ -6,13 +6,11 @@ import org.apache.camel.Route;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RefreshScope
 public class CamelRouteRefresher implements ApplicationListener<EnvironmentChangeEvent> {
 
     Logger logger = LoggerFactory.getLogger(CamelRouteRefresher.class);
