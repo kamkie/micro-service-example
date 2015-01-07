@@ -2,9 +2,9 @@
   "name": "spring-boot-admin-server-ui",
   "version": "1.1.1",
   "scripts": {
-    "postinstall": "./node_modules/protractor/bin/webdriver-manager update",
-    "pretest": "./node_modules/protractor/bin/webdriver-manager start &",
-    "test": "./node_modules/gulp/bin/gulp.js"
+    "postinstall": "node ./node_modules/protractor/bin/webdriver-manager update",
+    "pretest": "node ./node_modules/protractor/bin/webdriver-manager start &",
+    "test": "node ./node_modules/gulp/bin/gulp.js"
   },
   "dependencies": {
     "es5-shim": "^3.0.2",

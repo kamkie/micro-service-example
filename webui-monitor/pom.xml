@@ -38,7 +38,7 @@
                             <goal>exec</goal>
                         </goals>
                         <configuration>
-                            <executable>./node_modules/.bin/gulp</executable>
+                            <executable>${project.basedir}/node_modules/.bin/gulp.cmd</executable>
                             <arguments>
                                 <argument>--skipTests=${skipTests}</argument>
                             </arguments>
