@@ -22,9 +22,9 @@ public class Application implements Serializable {
     }
 
     @JsonCreator
-    public Application(@JsonProperty(value = "url", required = true) String url,
-                       @JsonProperty(value = "name", required = true) String name, @JsonProperty("id") String id) {
-        this.url = url.replaceFirst("/+$", "");
+    public Application(@JsonProperty(value = "url", required = false) String url,
+                       @JsonProperty(value = "name", required = false) String name, @JsonProperty("id") String id) {
+        this.url = url;
         this.name = name;
         this.id = id;
     }

@@ -7,10 +7,11 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.ribbon.RibbonAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@EnableAutoConfiguration
+@EnableAutoConfiguration(exclude = {RibbonAutoConfiguration.class})
 @Configuration
 @ComponentScan
 @SpringApplicationConfiguration
