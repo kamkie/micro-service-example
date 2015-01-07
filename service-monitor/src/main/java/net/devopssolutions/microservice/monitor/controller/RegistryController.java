@@ -117,11 +117,4 @@ public class RegistryController {
         return applicationOptional.isPresent() ? applicationOptional.get() : new Application("", "", id);
     }
 
-    private HttpHeaders getBasicAuthHeaders(String username, String password) {
-        HttpHeaders headers = new HttpHeaders();
-        String auth = username + ":" + password;
-        String authHeader = "Basic " + Base64.encodeBase64String(auth.getBytes(Charset.forName("UTF-8")));
-        headers.set(HttpHeaders.AUTHORIZATION, authHeader);
-        return headers;
-    }
 }
