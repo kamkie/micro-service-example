@@ -40,7 +40,7 @@
                         <configuration>
                             <executable>${project.basedir}/node_modules/.bin/gulp.cmd</executable>
                             <arguments>
-                                <argument>--skipTests=${skipTests}</argument>
+                                <argument>--skipTests=true</argument>
                             </arguments>
                         </configuration>
                     </execution>
