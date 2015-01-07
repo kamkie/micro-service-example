@@ -11,13 +11,17 @@
     <version>0.7.2-SNAPSHOT</version>
 
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>net.devopssolutions.microservice</groupId>-->
-            <!--<artifactId>common-auth</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>net.devopssolutions.microservice</groupId>
+            <artifactId>common-auth</artifactId>
+        </dependency>
         <dependency>
             <groupId>net.devopssolutions.microservice</groupId>
             <artifactId>common-monitor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.devopssolutions.microservice</groupId>
+            <artifactId>webui-monitor</artifactId>
         </dependency>
 
         <dependency>
@@ -31,12 +35,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui</artifactId>
-            <version>1.1.1</version>
         </dependency>
 
         <dependency>
