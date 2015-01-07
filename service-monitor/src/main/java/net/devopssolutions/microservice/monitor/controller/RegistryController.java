@@ -15,6 +15,7 @@
  */
 package net.devopssolutions.microservice.monitor.controller;
 
+import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.DiscoveryClient;
 import net.devopssolutions.microservice.monitor.model.Application;
 import org.apache.commons.codec.binary.Base64;
@@ -54,14 +55,25 @@ public class RegistryController {
     @RequestMapping(value = "/api/application/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> get(@PathVariable String id) {
         LOGGER.debug("Deliver registered application with ID '{}'", id);
-        String[] splitId = id.split(":");
-        Application application = getInstanceApplication(discoveryClient.getApplication(splitId[1]), id);
+
+        Application application = getInstanceApplication(discoveryClient.getApplication(getAppNameFromId(id)), id);
         if (application != null) {
             return new ResponseEntity<>(application, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(application, HttpStatus.NOT_FOUND);
         }
     }
+
+    private String getAppNameFromId(String id) {
+        if (id != null) {
+            String[] splitId = id.split(":");
+            if (splitId != null && splitId.length > 1) {
+                return splitId[1];
+            }
+        }
+        return null;
+    }
+
 
     /**
      * List all registered applications with name
@@ -88,14 +100,20 @@ public class RegistryController {
 
     Collection<Application> getInstancesApplication(com.netflix.discovery.shared.Application application) {
         return application.getInstances().stream()
-                .map(instance -> new Application(instance.getStatusPageUrl(), instance.getAppName(), instance.getId()))
+                .map(RegistryController::mapInstanceInfoToApplication)
                 .collect(Collectors.toList());
+    }
+
+    private static Application mapInstanceInfoToApplication(InstanceInfo instance) {
+        String actuatorUrl = instance.getStatusPageUrl().substring(0, instance.getStatusPageUrl().lastIndexOf('/'));
+        return new Application(actuatorUrl, instance.getAppName(), instance.getId());
     }
 
     Application getInstanceApplication(com.netflix.discovery.shared.Application application, String id) {
         Optional<Application> applicationOptional = application.getInstances().stream()
-                .map(instance -> new Application(instance.getStatusPageUrl(), instance.getAppName(), instance.getId()))
-                .filter(app -> app.getId().equalsIgnoreCase(id)).findFirst();
+                .map(RegistryController::mapInstanceInfoToApplication)
+                .filter(app -> app.getId().equalsIgnoreCase(id))
+                .findFirst();
         return applicationOptional.isPresent() ? applicationOptional.get() : new Application("", "", id);
     }
 
