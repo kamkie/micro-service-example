@@ -32,7 +32,7 @@
         <site.url>file://d:/Projects/sites/</site.url>
         <java.version>1.8</java.version>
         <spring.bom.version>1.1.0.RELEASE</spring.bom.version>
-        <spring.boot.version>1.2.0.RELEASE</spring.boot.version>
+        <spring.boot.version>1.2.1.RELEASE</spring.boot.version>
         <spring.loaded.version>1.2.1.RELEASE</spring.loaded.version>
         <spring.cloud.version>1.0.0.RC1</spring.cloud.version>
         <camel.version>2.15-SNAPSHOT</camel.version>
