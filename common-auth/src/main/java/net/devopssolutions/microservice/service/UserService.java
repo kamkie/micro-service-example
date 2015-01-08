@@ -80,6 +80,7 @@ public class UserService {
             User user = null;
             if ("user".equals(name)) {
                 user = User.newBuilder()
+                        .withId(0L)
                         .withName("user")
                         .withRole("USER")
                         .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
@@ -87,6 +88,7 @@ public class UserService {
             }
             if ("admin".equals(name)) {
                 user = User.newBuilder()
+                        .withId(0L)
                         .withName("admin")
                         .withRole("ADMIN")
                         .withPassword("$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK")
