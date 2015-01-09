@@ -1,6 +1,5 @@
 package net.devopssolutions.microservice.client.controller;
 
-import net.devopssolutions.microservice.model.User;
 import net.devopssolutions.microservice.service.UserService;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -15,8 +14,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.WebSocketSession;
 
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,28 +29,29 @@ public class WsController {
     @Autowired
     private UserService userService;
 
-    @Autowired
+//    @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
     @MessageMapping("/user")
     @SendTo("/broker/users")
-    public Map<String, Object> sendUser(Map<String, String> user) throws Exception {
+    public Map<String, Object> sendUser(Map<String, String> user, WebSocketSession session) throws Exception {
         logger.info("send user");
         Map<String, Object> map = new HashMap<>();
         map.put("date", DateTimeFormat.fullDateTime().print(new DateTime()));
+        map.put("session", session);
         map.put("user", userService.getUserByName(user.get("name")));
 
         return map;
     }
 
-    @Scheduled(fixedDelay = 5000)
-    @Async
-    public void publishUsers() {
-        logger.debug("publishUsers");
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("date", DateTimeFormat.fullDateTime().print(new DateTime()));
-        messagingTemplate.convertAndSend("/broker/userList", map);
-    }
+//    @Scheduled(fixedDelay = 5000)
+//    @Async
+//    public void publishUsers() {
+//        logger.debug("publishUsers");
+//
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("date", DateTimeFormat.fullDateTime().print(new DateTime()));
+//        messagingTemplate.convertAndSend("/broker/userList", map);
+//    }
 
 }
