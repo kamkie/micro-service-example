@@ -1,6 +1,6 @@
 package net.devopssolutions.microservice.client.config;
 
-import net.devopssolutions.microservice.client.controller.WebSocketEndPoint;
+import net.devopssolutions.microservice.client.controller.WebSocketEndPoints;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -15,7 +15,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer im
 
     @Bean
     public WebSocketHandler addHandler() {
-        return new PerConnectionWebSocketHandler(WebSocketEndPoint.class);
+        return new PerConnectionWebSocketHandler(WebSocketEndPoints.class);
     }
 
     @Override
