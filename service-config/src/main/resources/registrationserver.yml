@@ -13,14 +13,11 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
     hostname: localhost
-#    statusPageUrlPath: /admin/info
-#    healthCheckUrlPath: /admin/health
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
   client:
-    registryFetchIntervalSeconds: 5
-    registerWithEureka: false
-    fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.domain}:${server.port}/eureka/
+      defaultZone: http://${eureka.domain}:${eureka.port}/eureka/
   server:
     waitTimeInMsWhenSyncEmpty: 0
 logging:
