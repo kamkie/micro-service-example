@@ -39,9 +39,9 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
   (25, 'application', 'default', 'master', 'info.name', '${spring.application.name}'),
   (26, 'application', 'dev', 'master', 'spring.thymeleaf.cache', 'false'),
   (27, 'authserver', 'default', 'master', 'server.port', '8877'),
-  (28, 'authserver', 'default', 'master', 'spring.datasource.driverClassName', ' com.mysql.jdbc.Driver'),
-  (29, 'authserver', 'default', 'master', 'spring.datasource.password', '{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk='),
-  (30, 'authserver', 'default', 'master', 'spring.datasource.url', ' jdbc:mysql://localhost/test'),
+  (28, 'authserver', 'default', 'master', 'spring.datasource.driverClassName', 'com.mysql.jdbc.Driver'),
+  (29, 'authserver', 'default', 'master', 'spring.datasource.password', '{cipher}AQA50llVM63XLNK1q/B2Sm1XZeBYBt8qFZuiBf+h5wq0QECY97dgN/f0gMLW3OXrF37VNFKlHcFx7qESOzDHAOQJ6s8eV+1Ik016bcNueLCfPyYUxrQZMMwKR9q4f+vrCxtcqJAR7lTCcybGatnXfhjd1T7Dutz3I2GwRHfoMKMdnGx8iHjs1YxKkXU6BQI+9ju0T72/kg1uIE9z7+absg5B+bivWNVJvPWz1GEth7qIS+E39+02to06Qb9N/ysjIKjP9gWGHP1CPiX+cUuvpIkWkNK5epbmU0RS7JfUse965h9gmFq3rUi5pHouHcRxWwDfFz4ISRAH8iUQ7eo+V7Dgy3eUcXf5AQS7biGkE4D/KkSjI8ebxq9xYmKbEDZHsoQ='),
+  (30, 'authserver', 'default', 'master', 'spring.datasource.url', 'jdbc:mysql://localhost/test'),
   (31, 'authserver', 'default', 'master', 'spring.datasource.username', 'root'),
   (32, 'client', 'default', 'master', 'server.port', '8866'),
   (33, 'client', 'default', 'master', 'logging.file', 'logs/service-client.log'),
@@ -78,3 +78,7 @@ INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'spring.jpa.database-platform', 'org.hibernate.dialect.MySQLDialect');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'logging.file', 'logs/service-auth.log');
