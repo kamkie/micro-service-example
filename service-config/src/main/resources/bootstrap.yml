@@ -1,4 +1,9 @@
 spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/test
+    username: root
+    password: root
   application:
     name: configserver
   cloud:
@@ -6,6 +11,10 @@ spring:
       enabled: false
   profiles:
     active: native
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
 encrypt:
   failOnError: false
   keyStore:
