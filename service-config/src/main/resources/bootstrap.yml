@@ -8,9 +8,14 @@ spring:
     name: configserver
   cloud:
     config:
+      server:
+        prefix: /config
       enabled: false
   profiles:
     active: native
+  data:
+    rest:
+      base-uri: /api/v1
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:

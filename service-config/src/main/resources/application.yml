@@ -1,6 +1,9 @@
 spring:
   jmx:
     enabled: true
+  data:
+    rest:
+      base-uri: /api/v1
   boot:
     admin:
       username: admin

@@ -4,6 +4,8 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import net.devopssolutions.microservice.config.model.ConfigEntry;
 import org.apache.commons.lang3.ArrayUtils;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.config.Environment;
@@ -43,9 +45,15 @@ public class DbEnvironmentRepository implements EnvironmentRepository {
             }
         }
 
-        List<ConfigEntry> configList = hibernateTemplate.findByExample(new ConfigEntry());
+        List<?> configList = hibernateTemplate.findByCriteria(
+                DetachedCriteria.forClass(ConfigEntry.class)
+                        .add(Restrictions.in("applicationName", names))
+                        .add(Restrictions.in("profile", profiles))
+                        .add(Restrictions.eq("label", label))
+        );
 
-        for (ConfigEntry configEntry : configList) {
+        for (Object configEntryObj : configList) {
+            ConfigEntry configEntry = (ConfigEntry) configEntryObj;
             Map<String, String> configs = sources.get(configEntry.getApplicationName(), configEntry.getProfile());
             configs.put(configEntry.getKey(), configEntry.getValue());
         }

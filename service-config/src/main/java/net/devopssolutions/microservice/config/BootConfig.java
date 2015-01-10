@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(basePackages = "net.devopssolutions.microservice")
 @EnableConfigServer
 @EnableDiscoveryClient
-@SpringApplicationConfiguration
 public class BootConfig extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
