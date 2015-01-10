@@ -3,12 +3,12 @@
     <parent>
         <artifactId>micro-service-example</artifactId>
         <groupId>net.devopssolutions.microservice</groupId>
-        <version>0.7.3</version>
+        <version>0.7.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>service-auth</artifactId>
-    <version>0.7.3</version>
+    <version>0.7.4-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
