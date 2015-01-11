@@ -1,14 +1,15 @@
 package net.devopssolutions.microservice.model;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class User implements UserDetails, Principal {
+@Data
+public class User implements UserDetails {
 
     private Long id;
     private String name;
@@ -45,22 +46,6 @@ public class User implements UserDetails, Principal {
         return builder;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> collection = new ArrayList<>();
@@ -71,17 +56,6 @@ public class User implements UserDetails, Principal {
             collection.add(new SimpleGrantedAuthority("ROLE_" + getRole()));
         }
         return collection;
-    }
-
-    /**
-     * for deserialization only
-     */
-    private void setAuthorities(Object authorities) {
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 
     @Override
@@ -109,17 +83,6 @@ public class User implements UserDetails, Principal {
         return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public static final class Builder {
         private Long id = null;

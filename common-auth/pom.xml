@@ -28,6 +28,11 @@
             <artifactId>feign-ribbon</artifactId>
             <optional>false</optional>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>
