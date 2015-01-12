@@ -8,11 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.WebSocketSession;
 
@@ -30,7 +27,7 @@ public class WsController {
     private UserService userService;
 
 //    @Autowired
-    private SimpMessageSendingOperations messagingTemplate;
+//    private SimpMessageSendingOperations messagingTemplate;
 
     @MessageMapping("/user")
     @SendTo("/broker/users")

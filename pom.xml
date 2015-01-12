@@ -36,6 +36,7 @@
         <spring.loaded.version>1.2.1.RELEASE</spring.loaded.version>
         <spring.cloud.version>1.0.0.RC1</spring.cloud.version>
         <camel.version>2.15-SNAPSHOT</camel.version>
+        <resthub.version>2.2.0</resthub.version>
     </properties>
 
     <dependencyManagement>
@@ -113,6 +114,7 @@
                 <artifactId>jquery</artifactId>
                 <version>2.1.1</version>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-core</artifactId>
@@ -122,6 +124,12 @@
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-spring-boot</artifactId>
                 <version>${camel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.resthub</groupId>
+                <artifactId>resthub-web-server</artifactId>
+                <version>${resthub.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
