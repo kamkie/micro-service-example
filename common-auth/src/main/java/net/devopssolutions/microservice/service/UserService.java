@@ -2,7 +2,6 @@ package net.devopssolutions.microservice.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import net.devopssolutions.microservice.model.User;
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,7 +15,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.nio.charset.Charset;
+
+import static net.devopssolutions.microservice.util.BasicAuthUtil.getBasicAuthHeaders;
 
 @Service
 public class UserService {
@@ -35,8 +35,7 @@ public class UserService {
     }
 
     public User getUserByName(String name, String username, String password) {
-        HttpHeaders headers = getBasicAuthHeaders(username, password);
-        return getUserByName(name, headers);
+        return getUserByName(name, getBasicAuthHeaders(username, password));
     }
 
     public User getUserByNameAuthFromRequest(String name) {
@@ -55,14 +54,6 @@ public class UserService {
 
     public User getUserByName(String name, HttpHeaders headers) {
         return userService.getUserByName(name, headers);
-    }
-
-    private HttpHeaders getBasicAuthHeaders(String username, String password) {
-        HttpHeaders headers = new HttpHeaders();
-        String auth = username + ":" + password;
-        String authHeader = "Basic " + Base64.encodeBase64String(auth.getBytes(Charset.forName("UTF-8")));
-        headers.set(HttpHeaders.AUTHORIZATION, authHeader);
-        return headers;
     }
 
     @Component
