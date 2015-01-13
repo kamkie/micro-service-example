@@ -156,7 +156,7 @@ gulp.task('copy', function () {
 });
 
 gulp.task('backend-server', shell.task([
-    'cd ../spring-boot-admin-samples/spring-boot-admin-sample && mvn spring-boot:run -D"run.arguments=--server.port=' +
+    'cd ../service-monitor && mvn spring-boot:run -D"run.arguments=--server.port=' +
     backendPort + '"'
 ]));
 
