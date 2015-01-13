@@ -7,6 +7,7 @@ Dependencies
 * maven 3.1+
 * nodejs for webui project
 * MySQL 5+
+* JCE Unlimited Strength Jurisdiction Policy Files
 
 Steps for running
 ---------------------
@@ -39,6 +40,7 @@ java -jar ../../../target/service-config-{version}.jar
 * all services need `logback.xml` and `bootstrap.yml` files from resources directory
 **service-config** require also `application.yml`
 these file are also part of jar file
+* for encripting config values [JCE downolad](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html) and [JCE instalation instruction](http://suhothayan.blogspot.com/2012/05/how-to-install-java-cryptography.html)
 
 ### Passwords
 Servises have 2 build in uses
