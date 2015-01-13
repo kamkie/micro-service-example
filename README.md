@@ -39,3 +39,10 @@ java -jar ../../../target/service-config-{version}.jar
 * all services need `logback.xml` and `bootstrap.yml` files from resources directory
 **service-config** require also `application.yml`
 these file are also part of jar file
+
+### Passwords
+Servises have 2 build in uses
+* **user** wiht password `password`
+* **admin** with password `password`
+
+Passwords are hashed using `BCryptPasswordEncoder` witout static salt so it can be generated very easily 
