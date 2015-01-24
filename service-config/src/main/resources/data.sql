@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 -- Zrzucanie danych dla tabeli test.config_entry: ~53 rows (około)
 /*!40000 ALTER TABLE `config_entry` DISABLE KEYS */;
+DELETE FROM `config_entry`;
 INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`, `value`) VALUES
   (1, 'application', 'default', 'master', 'spring.boot.admin.username', 'admin'),
   (2, 'application', 'default', 'master', 'services.auth.username', 'user'),
@@ -69,6 +70,7 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
 
 -- Zrzucanie danych dla tabeli test.users: ~50 rows (około)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+DELETE FROM `users`;
 INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_hash`, `is_admin`, `created`) VALUES
   (1, 'admin', '$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK', 'ADMIN', 1, NULL, 1, '2014-12-14 00:01:42'),
   (2, 'user', '$2a$10$F6WOdmfvJPjx9YiWdAYQNOmudKgTQtM37TcbNAhHukXKe9De4oSVK', 'USER', 1, NULL, 1, '2014-12-14 00:01:41'),
