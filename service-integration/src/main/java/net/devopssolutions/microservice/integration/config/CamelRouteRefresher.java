@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CamelRouteRefresher implements ApplicationListener<EnvironmentChangeEvent> {
 
-    Logger logger = LoggerFactory.getLogger(CamelRouteRefresher.class);
+    private Logger logger = LoggerFactory.getLogger(CamelRouteRefresher.class);
 
     @Autowired
-    CamelContext camelContext;
+    private CamelContext camelContext;
 
     @Autowired
-    RouteRegistry routeRegistry;
+    private RouteRegistry routeRegistry;
 
     @Override
     public void onApplicationEvent(EnvironmentChangeEvent event) {

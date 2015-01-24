@@ -22,13 +22,13 @@ import static net.devopssolutions.microservice.util.BasicAuthUtil.getBasicAuthHe
 public class UserService {
 
     @Autowired
-    UserServiceImpl userService;
+    private UserServiceImpl userService;
 
     @Value("${services.auth.username}")
-    String username;
+    private String username;
 
     @Value("${services.auth.password}")
-    String password;
+    private String password;
 
     public User getUserByName(String name) {
         return getUserByName(name, username, password);
@@ -60,7 +60,7 @@ public class UserService {
     public static class UserServiceImpl {
         @SuppressWarnings("SpringJavaAutowiringInspection")
         @Autowired
-        RestTemplate restTemplate;
+        private RestTemplate restTemplate;
 
         @HystrixCommand(fallbackMethod = "defaultUsers")
         public User getUserByName(String name, HttpHeaders headers) {

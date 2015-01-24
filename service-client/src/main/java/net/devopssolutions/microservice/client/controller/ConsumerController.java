@@ -14,7 +14,7 @@ import java.security.Principal;
 public class ConsumerController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping("/")
     public ResponseEntity<User> consume(HttpServletRequest request) {

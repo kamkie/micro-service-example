@@ -13,7 +13,7 @@ import java.util.Map;
 public class RouteRegistry {
 
     @Autowired
-    SimpleRoute simpleRoute;
+    private SimpleRoute simpleRoute;
 
     public Map<Class<? extends RouteBuilder>, RouteBuilder> getRoutes() {
         Map<Class<? extends RouteBuilder>, RouteBuilder> routes = new HashMap<>();

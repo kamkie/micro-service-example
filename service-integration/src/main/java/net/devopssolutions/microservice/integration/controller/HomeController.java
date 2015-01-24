@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @Autowired
-    CamelContext camelContext;
+    private CamelContext camelContext;
 
     @RequestMapping("/")
     public String refresh() {

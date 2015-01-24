@@ -21,7 +21,7 @@ import java.util.Map;
 @EnableAsync
 public class WsController {
 
-    Logger logger = LoggerFactory.getLogger(WsController.class);
+    private Logger logger = LoggerFactory.getLogger(WsController.class);
 
     @Autowired
     private UserService userService;

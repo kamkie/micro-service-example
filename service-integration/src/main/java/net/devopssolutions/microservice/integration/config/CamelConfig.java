@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CamelConfig {
 
-    Logger logger = LoggerFactory.getLogger(CamelConfig.class);
+    private Logger logger = LoggerFactory.getLogger(CamelConfig.class);
 
     @Bean
     CamelContextConfiguration contextConfiguration() {

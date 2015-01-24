@@ -12,13 +12,15 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class ConfigRefresher {
 
-    Logger logger = LoggerFactory.getLogger(ConfigRefresher.class);
+    private static final int REFRESH_DELAY = 100000;
+
+    private Logger logger = LoggerFactory.getLogger(ConfigRefresher.class);
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    RefreshEndpoint refreshEndpoint;
+    private RefreshEndpoint refreshEndpoint;
 
-    @Scheduled(fixedDelay = 100000)
+    @Scheduled(fixedDelay = REFRESH_DELAY)
     public void refreshConfig() {
         logger.info("============ refreshing config =============");
         String[] changes = refreshEndpoint.refresh();

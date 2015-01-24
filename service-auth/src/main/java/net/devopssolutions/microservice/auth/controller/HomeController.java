@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HomeController {
 
     @Autowired
-    HttpServletRequest request;
+    private HttpServletRequest request;
 
     @RequestMapping("/")
 

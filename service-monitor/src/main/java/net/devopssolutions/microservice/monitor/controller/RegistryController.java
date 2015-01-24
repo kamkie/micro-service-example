@@ -38,16 +38,16 @@ public class RegistryController {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistryController.class);
 
     @Value("${eureka.client.serviceUrl.defaultZone}")
-    String eurekaUrl;
+    private String eurekaUrl;
 
     @Value("${eureka.username:user}")
-    String eurekaUser;
+    private String eurekaUser;
 
     @Value("${eureka.password}")
-    String eurekaPassword;
+    private String eurekaPassword;
 
     @Autowired
-    DiscoveryClient discoveryClient;
+    private DiscoveryClient discoveryClient;
 
     @RequestMapping(value = "/api/application/{id}", method = RequestMethod.GET)
     public ResponseEntity<Object> get(@PathVariable String id) {
@@ -111,7 +111,11 @@ public class RegistryController {
                 .map(RegistryController::mapInstanceInfoToApplication)
                 .filter(app -> app.getId().equalsIgnoreCase(id))
                 .findFirst();
-        return applicationOptional.isPresent() ? applicationOptional.get() : new Application("", "", id);
+        if (applicationOptional.isPresent()) {
+            return applicationOptional.get();
+        } else {
+            return new Application("", "", id);
+        }
     }
 
 }

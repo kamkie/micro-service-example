@@ -24,7 +24,8 @@ import javax.persistence.EntityManagerFactory;
 @EnableAutoConfiguration
 @Configuration
 @ComponentScan(basePackages = "net.devopssolutions.microservice", excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = AuthDetailsRestService.class)})
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = AuthDetailsRestService.class)
+})
 @EntityScan
 @EnableJpaRepositories
 @EnableDiscoveryClient
@@ -48,7 +49,7 @@ public class BootAuth extends SpringBootServletInitializer {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    EntityManagerFactory factory;
+    private EntityManagerFactory factory;
 
     @Bean
     public HibernateTemplate hibernateTemplate() {

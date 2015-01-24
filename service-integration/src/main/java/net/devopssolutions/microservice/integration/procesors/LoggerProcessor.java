@@ -13,16 +13,16 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 public class LoggerProcessor implements Processor {
 
-    Logger logger = LoggerFactory.getLogger(LoggerProcessor.class);
+    private Logger logger = LoggerFactory.getLogger(LoggerProcessor.class);
 
     @Value("${route.simple.from}")
-    String uriFrom;
+    private String uriFrom;
 
     @Value("${route.simple.to}")
-    String uriTo;
+    private String uriTo;
 
     @Value("${route.simple.something}")
-    String something;
+    private String something;
 
     @Override
     public void process(Exchange exchange) throws Exception {

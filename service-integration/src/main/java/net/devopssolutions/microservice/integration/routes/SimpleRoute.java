@@ -13,16 +13,16 @@ import org.springframework.stereotype.Component;
 @RefreshScope
 public class SimpleRoute extends RouteBuilder {
 
-    Logger logger = LoggerFactory.getLogger(SimpleRoute.class);
+    private Logger logger = LoggerFactory.getLogger(SimpleRoute.class);
 
     @Value("${route.simple.from}")
-    String uriFrom;
+    private String uriFrom;
 
     @Value("${route.simple.to}")
-    String uriTo;
+    private String uriTo;
 
     @Autowired
-    LoggerProcessor loggerProcessor;
+    private LoggerProcessor loggerProcessor;
 
     @Override
     public void configure() throws Exception {

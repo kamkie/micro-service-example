@@ -6,7 +6,10 @@ import static java.nio.charset.Charset.forName;
 import static org.apache.commons.codec.binary.Base64.encodeBase64String;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
-public class BasicAuthUtil {
+public final class BasicAuthUtil {
+
+    private BasicAuthUtil() {
+    }
 
     public static HttpHeaders getBasicAuthHeaders(String username, String password) {
         return getBasicAuthHeaders(new HttpHeaders(), username, password);

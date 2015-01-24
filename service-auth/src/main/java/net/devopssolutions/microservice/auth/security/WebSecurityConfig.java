@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @EnableWebMvcSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public static final int ORDER_FORM = 3;
     @Autowired
     @Qualifier("authDetailsService")
     private UserDetailsService userDetailsService;
@@ -66,7 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
-    @Order(3)
+    @Order(ORDER_FORM)
     @Configuration
     public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 

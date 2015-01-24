@@ -47,7 +47,7 @@ public class BootConfig extends SpringBootServletInitializer {
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
-    EntityManagerFactory factory;
+    private EntityManagerFactory factory;
 
     @Bean
     public HibernateTemplate hibernateTemplate() {

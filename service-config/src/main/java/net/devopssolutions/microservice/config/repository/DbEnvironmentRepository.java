@@ -24,7 +24,7 @@ import java.util.Map;
 public class DbEnvironmentRepository implements EnvironmentRepository {
 
     @Autowired
-    HibernateTemplate hibernateTemplate;
+    private HibernateTemplate hibernateTemplate;
 
     @Override
     public Environment findOne(String application, String env, String label) {

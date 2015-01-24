@@ -15,7 +15,7 @@ import java.security.Principal;
 public class UsersController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @RequestMapping("/principal")
     public ResponseEntity<Principal> user(Principal user) {
