@@ -16,7 +16,7 @@
         <module>common-auth</module>
         <module>service-monitor</module>
         <module>common-monitor</module>
-        <!--<module>webui-monitor</module>-->
+        <module>webui-monitor</module>
     </modules>
 
 
@@ -167,6 +167,11 @@
                     <artifactId>maven-pmd-plugin</artifactId>
                     <version>3.3</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -229,6 +234,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                    <threshold>Medium</threshold>
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -237,7 +260,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.3</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -246,6 +268,16 @@
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                    <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                    <threshold>Medium</threshold>
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>

@@ -57,7 +57,7 @@ public class RegistryController {
         if (application != null) {
             return new ResponseEntity<>(application, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(application, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 
