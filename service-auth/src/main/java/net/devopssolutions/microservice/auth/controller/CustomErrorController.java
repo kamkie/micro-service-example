@@ -81,10 +81,7 @@ public class CustomErrorController implements ErrorController {
         Integer statusCode = (Integer) request
                 .getAttribute("javax.servlet.error.status_code");
         if (statusCode != null) {
-            try {
-                return HttpStatus.valueOf(statusCode);
-            } catch (Exception ex) {
-            }
+            return HttpStatus.valueOf(statusCode);
         }
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }

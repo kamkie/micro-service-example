@@ -16,7 +16,7 @@
         <module>common-auth</module>
         <module>service-monitor</module>
         <module>common-monitor</module>
-        <module>webui-monitor</module>
+        <!--<module>webui-monitor</module>-->
     </modules>
 
 
@@ -162,6 +162,11 @@
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>1.3.2</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -211,8 +216,39 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>cpd-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.3</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                            <report>cpd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <distributionManagement>
         <repository>
