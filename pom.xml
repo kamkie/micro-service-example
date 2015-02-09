@@ -132,12 +132,6 @@
                 <artifactId>resthub-web-server</artifactId>
                 <version>${resthub.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>org.springframework.retry</groupId>
-                <artifactId>spring-retry</artifactId>
-                <version>1.1.2.RELEASE</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

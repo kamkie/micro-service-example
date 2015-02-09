@@ -33,9 +33,7 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
   (18, 'application', 'default', 'master', 'spring.boot.admin.password', '{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk='),
   (19, 'application', 'default', 'master', 'eureka.client.region', 'default'),
   (20, 'application', 'default', 'master', 'eureka.client.fetchRegistry', 'true'),
-  (21, 'application', 'default', 'master', 'turbine.appConfig', 'authserver,configserver,monitor,client,registrationserver'),
   (22, 'application', 'default', 'master', 'eureka.password', '{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk='),
-  (23, 'application', 'default', 'master', 'turbine.aggregator.clusterConfig', 'AUTHSERVER,CONFIGSERVER,MONITOR,CLIENT,REGISTRATIONSERVER'),
   (24, 'application', 'default', 'master', 'spring.boot.admin.url', 'http://localhost:8855'),
   (25, 'application', 'default', 'master', 'info.name', '${spring.application.name}'),
   (26, 'application', 'dev', 'master', 'spring.thymeleaf.cache', 'false'),
@@ -84,5 +82,3 @@ INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_
 
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'spring.jpa.database-platform', 'org.hibernate.dialect.MySQLDialect');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'logging.file', 'logs/service-auth.log');
-INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`)
-VALUES ('registrationserver', 'default', 'master', 'eureka.dashboard.enabled', 'false');

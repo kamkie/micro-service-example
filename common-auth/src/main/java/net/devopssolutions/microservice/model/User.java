@@ -1,5 +1,6 @@
 package net.devopssolutions.microservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -47,6 +48,7 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> collection = new ArrayList<>();
         if (getId() != null && !"user".equalsIgnoreCase(getRole())) {

@@ -1,6 +1,5 @@
 package net.devopssolutions.microservice.monitor;
 
-import net.devopssolutions.microservice.monitor.config.EnableCloudDashboard;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,6 +11,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.FeignClientScan;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
 @FeignClientScan
 @EnableCaching
 @EnableHystrixDashboard
-@EnableCloudDashboard
+@EnableTurbine
 public class BootMonitor extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
