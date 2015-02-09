@@ -84,3 +84,5 @@ INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_
 
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'spring.jpa.database-platform', 'org.hibernate.dialect.MySQLDialect');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'logging.file', 'logs/service-auth.log');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`)
+VALUES ('registrationserver', 'default', 'master', 'eureka.dashboard.enabled', 'false');

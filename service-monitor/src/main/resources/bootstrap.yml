@@ -1,4 +1,4 @@
-spring:
+hespring:
   profiles:
     active: dev
   application:

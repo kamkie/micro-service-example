@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -62,11 +64,13 @@ public class UserService {
         @Autowired
         private RestTemplate restTemplate;
 
-        @HystrixCommand(fallbackMethod = "defaultUsers")
+        @HystrixCommand
+        @Retryable
         public User getUserByName(String name, HttpHeaders headers) {
             return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
         }
 
+        @Recover
         public User defaultUsers(String name, HttpHeaders headers) {
             User user = null;
             if ("user".equals(name)) {

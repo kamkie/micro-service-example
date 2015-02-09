@@ -1,0 +1,20 @@
+<div class="container" style="margin-bottom: 20px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="display: inline-block;">{{ instance.name }}
+                <small>{{ instance.url }}</small>
+            </h2>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="btn-group">
+            <a class="btn btn-default" ng-class="{active: $state.includes('apps.details')}" ui-sref="apps.details.metrics({id: instance.id})">Details</a>
+            <a class="btn btn-default" ui-sref-active="active" ui-sref="apps.logging({id: instance.id})">Logging</a></label>
+            <a class="btn btn-default" ui-sref-active="active" ui-sref="apps.jmx({id: instance.id})">JMX</a></label>
+            <a class="btn btn-default" ui-sref-active="active" ui-sref="apps.threads({id: instance.id})">Threads</a></label>
+            <a class="btn btn-default" ui-sref-active="active" ui-sref="circuit-breaker({type: 'instance', id: instance.id})"
+               ng-disabled="instance.circuitBreaker !== true">Circuit breakers</a></label>
+        </div>
+    </div>
+</div>
+<div ui-view></div>

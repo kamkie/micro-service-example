@@ -10,6 +10,7 @@ import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ import javax.persistence.EntityManagerFactory;
 @EnableJpaRepositories
 @EnableDiscoveryClient
 @EnableCaching
+@EnableCircuitBreaker
 @EnableConfigServer
 public class BootConfig extends SpringBootServletInitializer {
 

@@ -4,6 +4,8 @@ spring:
   data:
     rest:
       base-uri: /api/v1
+  application:
+    version: ${pom.version}
 management:
   context-path: /admin
 security:
@@ -34,3 +36,4 @@ services:
 info:
   os: ${os.name}
   name: ${spring.application.name}
+  version: ${project.version}
