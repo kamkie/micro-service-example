@@ -3,7 +3,7 @@ package net.devopssolutions.microservice.integration.config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.config.client.RefreshEndpoint;
+import org.springframework.cloud.bootstrap.config.RefreshEndpoint;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

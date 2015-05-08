@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.FeignClientScan;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "net.devopssolutions.microservice")
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-@FeignClientScan
+@EnableFeignClients
 @EnableCaching
 @EnableHystrixDashboard
 @EnableTurbine
@@ -38,7 +38,6 @@ public class BootMonitor extends SpringBootServletInitializer {
 
     @Bean
     public CacheManager cacheManager() {
-        ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager("passwordEncoder");
-        return cacheManager;
+        return new ConcurrentMapCacheManager("passwordEncoder");
     }
 }

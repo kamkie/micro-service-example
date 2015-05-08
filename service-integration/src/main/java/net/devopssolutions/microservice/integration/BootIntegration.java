@@ -11,7 +11,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.FeignClientScan;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,7 +25,7 @@ import java.util.List;
 @ComponentScan(basePackages = "net.devopssolutions.microservice")
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-@FeignClientScan
+@EnableFeignClients
 @EnableCaching
 public class BootIntegration extends SpringBootServletInitializer {
 
@@ -48,7 +48,6 @@ public class BootIntegration extends SpringBootServletInitializer {
 
     @Bean
     public CacheManager cacheManager() {
-        ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager("passwordEncoder");
-        return cacheManager;
+        return new ConcurrentMapCacheManager("passwordEncoder");
     }
 }
