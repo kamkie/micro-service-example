@@ -26,7 +26,7 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://user:${eureka.password}@localhost:8899/eureka/
+      defaultZone: https://user:${eureka.password}@localhost:8899/eureka/
     availabilityZones:
       default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
 services:
@@ -37,3 +37,8 @@ info:
   os: ${os.name}
   name: ${spring.application.name}
   version: ${project.version}
+
+server:
+  tomcat:
+    compression: 64
+    compressableMimeTypes: application/json,application/xml,text/html,text/plain

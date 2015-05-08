@@ -38,4 +38,5 @@ public class BootRegistration extends SpringBootServletInitializer {
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager("passwordEncoder");
     }
+
 }

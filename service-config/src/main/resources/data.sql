@@ -17,7 +17,7 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
   (2, 'application', 'default', 'master', 'services.auth.username', 'user'),
   (3, 'application', 'default', 'master', 'eureka.instance.metadataMap.instanceId', '${spring.application.name}:${server.port:${random.value}}'),
   (4, 'application', 'default', 'master', 'eureka.client.registerWithEureka', 'true'),
-  (5, 'application', 'default', 'master', 'eureka.client.serviceUrl.defaultZone', 'http://user:${eureka.password}@localhost:8899/eureka/'),
+  (5, 'application', 'default', 'master', 'eureka.client.serviceUrl.defaultZone', 'https://user:${eureka.password}@localhost:8899/eureka/'),
   (6, 'application', 'default', 'master', 'eureka.client.registryFetchIntervalSeconds', '5'),
   (7, 'application', 'default', 'master', 'security.user.password', '{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk='),
   (8, 'application', 'default', 'master', 'eureka.instance.healthCheckUrlPath', '/admin/health'),
@@ -34,7 +34,7 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
   (19, 'application', 'default', 'master', 'eureka.client.region', 'default'),
   (20, 'application', 'default', 'master', 'eureka.client.fetchRegistry', 'true'),
   (22, 'application', 'default', 'master', 'eureka.password', '{cipher}AQB0dM3dSMQM5wp7GMH3ovn3wQdkbsd8saIPlslBy95zukEuIjfUvAwHq5TLdSyYstRtCdo4YH/yumB2UCGOoYJPoWu2EX9aLBDwvWiNo6ggRGVZR6vnkGlXwNSIVrzWfOo4R2AqmiJWawcdTowa3HZsSACSy2VJhAOwBkkjU119FcbaAD8tyInEvCi3oIY6cgMsBa6Tni9xyNpWMRqB0t8ERs0ihOoGRaX20OJg7sQvI+y4bwV97wOkcVkkCMeGQTiBY7gy8OaGkXw3LfsoB7wy7rv/8me0sr6AY+KhEnmS05DEKchIzKhM5s1xS43JelN+sO+eIVRsIQqJpjKl+OoTf/+5kYHq6K9R5hJGJnv6r3Z18igKeUNA8HjUpKo4Wdk='),
-  (24, 'application', 'default', 'master', 'spring.boot.admin.url', 'http://localhost:8855'),
+  (24, 'application', 'default', 'master', 'spring.boot.admin.url', 'https://localhost:8855'),
   (25, 'application', 'default', 'master', 'info.name', '${spring.application.name}'),
   (26, 'application', 'dev', 'master', 'spring.thymeleaf.cache', 'false'),
   (27, 'authserver', 'default', 'master', 'server.port', '8877'),
@@ -62,7 +62,7 @@ INSERT INTO `config_entry` (`id`, `application_name`, `profile`, `label`, `key`,
   (49, 'registrationserver', 'default', 'master', 'security.user.password', '${eureka.password}'),
   (50, 'registrationserver', 'default', 'master', 'server.port', '8899'),
   (51, 'registrationserver', 'default', 'master', 'spring.cloud.config.enabled', 'false'),
-  (52, 'registrationserver', 'default', 'master', 'eureka.client.serviceUrl.defaultZone', 'http://${eureka.domain}:${eureka.port}/eureka/'),
+  (52, 'registrationserver', 'default', 'master', 'eureka.client.serviceUrl.defaultZone', 'https://${eureka.domain}:${eureka.port}/eureka/'),
   (53, 'registrationserver', 'peer', 'master', 'server.port', '8898');
 /*!40000 ALTER TABLE `config_entry` ENABLE KEYS */;
 
@@ -79,6 +79,12 @@ INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
+
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.tomcat.compression', '64');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.tomcat.compressableMimeTypes', 'application/json,application/xml,text/html,text/plain');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.ssl.key-store', 'classpath:key_store.jks');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.ssl.key-store-password', '${KEY_STORE_PASSWORD:devops}');
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.ssl.key-password', '${KEY_STORE_PASSWORD:devops}');
 
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'spring.jpa.database-platform', 'org.hibernate.dialect.MySQLDialect');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('authserver', 'default', 'master', 'logging.file', 'logs/service-auth.log');

@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 @EnableConfigurationProperties(ConfigServerProperties.class)
@@ -35,8 +36,7 @@ public class DbEnvironmentRepository implements EnvironmentRepository {
     public Environment findOne(String application, String env, String label) {
         Environment result = new Environment(env, label);
 
-        String[] profiles = env.split(",");
-        List<String> profileList = Arrays.asList(profiles);
+        List<String> profileList = Arrays.stream(env.split(",")).collect(Collectors.toList());
         profileList.add("default");
 
         String[] names = new String[]{application, "application"};
@@ -55,7 +55,7 @@ public class DbEnvironmentRepository implements EnvironmentRepository {
         List<?> configList = hibernateTemplate.findByCriteria(
                 DetachedCriteria.forClass(ConfigEntry.class)
                         .add(Restrictions.in("applicationName", names))
-                        .add(Restrictions.in("profile", profiles))
+                        .add(Restrictions.in("profile", profileList))
                         .add(Restrictions.eq("label", label))
         );
 
