@@ -19,8 +19,6 @@ import java.security.cert.X509Certificate;
 @Configuration
 public class TrustAllManager implements TrustManager, X509TrustManager {
 
-    private final SecureRandom secureRandom = new SecureRandom();
-
     public TrustAllManager() {
         try {
             log.info("init TrustAllManager");
@@ -28,8 +26,10 @@ public class TrustAllManager implements TrustManager, X509TrustManager {
             HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -> true);
             SSLContext sslContext = SSLContext.getInstance("Ssl");
             SSLContext tlsContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, new TrustManager[]{this}, secureRandom);
-            tlsContext.init(null, new TrustManager[]{this}, secureRandom);
+            SecureRandom secureRandom = new SecureRandom();
+            TrustManager[] trustManagers = {this};
+            sslContext.init(null, trustManagers, secureRandom);
+            tlsContext.init(null, trustManagers, secureRandom);
             HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
             SSLContext.setDefault(sslContext);
 

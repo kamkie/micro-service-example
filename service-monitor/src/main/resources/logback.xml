@@ -3,6 +3,7 @@
     <jmxConfigurator/>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.springframework.web.client.RestTemplate" level="DEBUG"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/service-monitor.log</file>
