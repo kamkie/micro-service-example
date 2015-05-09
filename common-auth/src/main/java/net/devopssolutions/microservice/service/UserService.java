@@ -73,7 +73,7 @@ public class UserService {
             if (user != null) {
                 return user;
             }
-            return restTemplate.exchange("http://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
+            return restTemplate.exchange("https://authserver/api/users/getByName/{name}", HttpMethod.GET, new HttpEntity<>(headers), User.class, name).getBody();
         }
 
         @HystrixCommand(fallbackMethod = "defaultUsers")

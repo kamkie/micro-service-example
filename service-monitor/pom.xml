@@ -20,10 +20,10 @@
             <groupId>net.devopssolutions.microservice</groupId>
             <artifactId>common-monitor</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>net.devopssolutions.microservice</groupId>-->
-        <!--<artifactId>webui-monitor</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>net.devopssolutions.microservice</groupId>
+            <artifactId>webui-monitor</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

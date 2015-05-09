@@ -16,6 +16,10 @@ eureka:
     cluster: DEFAULT
     metadataMap:
       instanceId: ${spring.application.name}:${server.port:${random.value}}
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+#    nonSecurePort: !!null
+    securePort: ${server.port}
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
