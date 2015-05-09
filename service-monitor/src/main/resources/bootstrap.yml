@@ -7,5 +7,3 @@ spring:
     config:
       uri: https://localhost:8888/config
       failFast: true
-
-authserver.CustomSSLSocketFactoryClassName: com.netflix.http4.ssl.AcceptAllSocketFactory

@@ -78,6 +78,7 @@ INSERT INTO `users` (`id`, `name`, `password`, `role`, `is_active`, `activation_
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
 
+INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'authserver.CustomSSLSocketFactoryClassName', 'com.netflix.http4.ssl.AcceptAllSocketFactory');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.tomcat.compression', '64');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.tomcat.compressableMimeTypes', 'application/json,application/xml,text/html,text/plain');
 INSERT INTO `config_entry` (`application_name`, `profile`, `label`, `key`, `value`) VALUES ('application', 'default', 'master', 'server.ssl.key-store', 'classpath:key_store.jks');

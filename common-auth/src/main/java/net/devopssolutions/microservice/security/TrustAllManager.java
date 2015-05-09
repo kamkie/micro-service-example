@@ -24,12 +24,10 @@ public class TrustAllManager implements TrustManager, X509TrustManager {
             log.info("init TrustAllManager");
             System.setProperty("com.netflix.eureka.shouldSSLConnectionsUseSystemSocketFactory", "true");
             HttpsURLConnection.setDefaultHostnameVerifier((hostname, session) -> true);
-            SSLContext sslContext = SSLContext.getInstance("Ssl");
-            SSLContext tlsContext = SSLContext.getInstance("TLS");
+            SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
             SecureRandom secureRandom = new SecureRandom();
             TrustManager[] trustManagers = {this};
             sslContext.init(null, trustManagers, secureRandom);
-            tlsContext.init(null, trustManagers, secureRandom);
             HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
             SSLContext.setDefault(sslContext);
 
