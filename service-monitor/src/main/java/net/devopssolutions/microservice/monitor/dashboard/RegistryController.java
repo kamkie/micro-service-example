@@ -39,7 +39,7 @@ public class RegistryController {
     private String getAppNameFromId(String id) {
         if (id != null) {
             String[] splitId = id.split(":");
-            if (splitId != null && splitId.length > 1) {
+            if (splitId.length > 1) {
                 return splitId[1];
             }
         }
@@ -78,7 +78,7 @@ public class RegistryController {
 
     private static Application mapInstanceInfoToApplication(InstanceInfo instance) {
         String actuatorUrl = instance.getStatusPageUrl().substring(0, instance.getStatusPageUrl().lastIndexOf('/'));
-        return new Application(actuatorUrl, instance.getAppName(), instance.getId());
+        return new Application(actuatorUrl.replaceFirst("http:", "https:"), instance.getAppName(), instance.getId());
     }
 
     Application getInstanceApplication(com.netflix.discovery.shared.Application application, String id) {
