@@ -50,7 +50,6 @@ public class RegistryController {
         return null;
     }
 
-
     /**
      * List all registered applications with name
      *
