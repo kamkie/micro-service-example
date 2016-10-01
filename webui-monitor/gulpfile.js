@@ -3,7 +3,6 @@
 var browserify = require('browserify'),
     clean = require('gulp-clean'),
     connect = require('gulp-connect'),
-    eslint = require('gulp-eslint'),
     glob = require('glob'),
     gulp = require('gulp'),
     karma = require('gulp-karma'),
@@ -24,16 +23,13 @@ var backendPort = 8080,
 /*
  * Useful tasks:
  * - gulp fast:
- *   - linting
  *   - unit tests
  *   - browserification
  *   - no minification, does not start server.
  * - gulp watch:
  *   - starts server with live reload enabled
- *   - lints, unit tests, browserifies and live-reloads changes in browser
  *   - no minification
  * - gulp:
- *   - linting
  *   - unit tests
  *   - browserification
  *   - minification and browserification of minified sources
@@ -73,18 +69,6 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('lint', function () {
-    return gulp.src([
-        'gulpfile.js',
-        'app/js/**/*.js',
-        'test/**/*.js',
-        '!app/js/third-party/**',
-        '!test/browserified/**',
-    ])
-        .pipe(eslint())
-        .pipe(eslint.format());
-});
-
 gulp.task('unit', skipTests(function () {
     return gulp.src([
         'test/unit/**/*.js'
@@ -94,7 +78,7 @@ gulp.task('unit', skipTests(function () {
         }));
 }));
 
-gulp.task('browserify', ['lint', 'unit'], function () {
+gulp.task('browserify', ['unit'], function () {
     return browserify('./app/js/app.js')
         .bundle({
             debug: true
@@ -104,7 +88,7 @@ gulp.task('browserify', ['lint', 'unit'], function () {
         .pipe(connect.reload());
 });
 
-gulp.task('ngAnnotate', ['lint', 'unit'], function () {
+gulp.task('ngAnnotate', ['unit'], function () {
     return gulp.src([
         'app/js/**/*.js',
         '!app/js/third-party/**',
