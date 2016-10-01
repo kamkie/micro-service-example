@@ -85,7 +85,6 @@ public class User implements UserDetails {
         return true;
     }
 
-
     public static final class Builder {
         private Long id = null;
         private String name = null;

@@ -37,11 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             http.anonymous();
-//            http
-//                    .authorizeRequests()
-//                    .anyRequest().hasRole("USER")
-//                    .and()
-//                    .httpBasic();
+            // http
+            // .authorizeRequests()
+            // .anyRequest().hasRole("USER")
+            // .and()
+            // .httpBasic();
         }
     }
 
@@ -56,11 +56,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             http.anonymous();
-//            http
-//                    .authorizeRequests()
-//                    .anyRequest().hasRole("USER")
-//                    .and()
-//                    .httpBasic();
+            // http
+            // .authorizeRequests()
+            // .anyRequest().hasRole("USER")
+            // .and()
+            // .httpBasic();
         }
     }
 

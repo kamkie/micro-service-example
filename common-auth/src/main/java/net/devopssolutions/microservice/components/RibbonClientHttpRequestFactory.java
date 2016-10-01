@@ -46,7 +46,6 @@ public class RibbonClientHttpRequestFactory extends org.springframework.cloud.ne
         return new RibbonHttpRequest(request, client, clientConfig);
     }
 
-
     @SuppressWarnings("deprecation")
     public class RibbonHttpRequest extends org.springframework.cloud.netflix.ribbon.RibbonClientHttpRequestFactory.RibbonHttpRequest {
 

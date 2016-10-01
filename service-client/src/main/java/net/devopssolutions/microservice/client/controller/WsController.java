@@ -27,8 +27,8 @@ public class WsController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private SimpMessageSendingOperations messagingTemplate;
+    // @Autowired
+    // private SimpMessageSendingOperations messagingTemplate;
 
     @MessageMapping("/user")
     @SendTo("/broker/users")
@@ -42,14 +42,14 @@ public class WsController {
         return map;
     }
 
-//    @Scheduled(fixedDelay = 5000)
-//    @Async
-//    public void publishUsers() {
-//        logger.debug("publishUsers");
-//
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("date", ISO_DATE_TIME.format(LocalDateTime.now());
-//        messagingTemplate.convertAndSend("/broker/userList", map);
-//    }
+    // @Scheduled(fixedDelay = 5000)
+    // @Async
+    // public void publishUsers() {
+    // logger.debug("publishUsers");
+    //
+    // Map<String, Object> map = new HashMap<>();
+    // map.put("date", ISO_DATE_TIME.format(LocalDateTime.now());
+    // messagingTemplate.convertAndSend("/broker/userList", map);
+    // }
 
 }

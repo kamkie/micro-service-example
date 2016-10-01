@@ -18,8 +18,7 @@ public class Application implements Serializable {
     }
 
     @JsonCreator
-    public Application(@JsonProperty(value = "url", required = false) String url,
-                       @JsonProperty(value = "name", required = false) String name, @JsonProperty("id") String id) {
+    public Application(@JsonProperty(value = "url") String url, @JsonProperty(value = "name") String name, @JsonProperty("id") String id) {
         this.url = url;
         this.name = name;
         this.id = id;

@@ -56,8 +56,7 @@ public class DbEnvironmentRepository implements EnvironmentRepository {
                 DetachedCriteria.forClass(ConfigEntry.class)
                         .add(Restrictions.in("applicationName", names))
                         .add(Restrictions.in("profile", profileList))
-                        .add(Restrictions.eq("label", label))
-        );
+                        .add(Restrictions.eq("label", label)));
 
         for (Object configEntryObj : configList) {
             ConfigEntry configEntry = (ConfigEntry) configEntryObj;

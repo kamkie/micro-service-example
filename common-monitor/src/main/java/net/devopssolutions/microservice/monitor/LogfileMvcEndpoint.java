@@ -21,8 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Controller that provides an API for logfiles, i.e. downloading the main logfile configured in environment property
- * 'logging.file' that is standard, but optional property for spring-boot applications.
+ * Controller that provides an API for logfiles, i.e. downloading the main logfile configured in environment property 'logging.file' that is standard, but optional property for spring-boot applications.
  */
 @Component
 @ConfigurationProperties(prefix = "endpoints.logfile")
@@ -54,7 +53,6 @@ public class LogfileMvcEndpoint implements MvcEndpoint {
     public Class<? extends Endpoint> getEndpointType() {
         return null;
     }
-
 
     public void setLogfile(String logfile) {
         this.logfile = logfile;
@@ -93,7 +91,6 @@ public class LogfileMvcEndpoint implements MvcEndpoint {
         FileCopyUtils.copy(file.getInputStream(), response.getOutputStream());
     }
 
-
     @RequestMapping(method = RequestMethod.HEAD)
     @ResponseBody
     public ResponseEntity<Object> available() {
@@ -122,6 +119,5 @@ public class LogfileMvcEndpoint implements MvcEndpoint {
 
         return true;
     }
-
 
 }
