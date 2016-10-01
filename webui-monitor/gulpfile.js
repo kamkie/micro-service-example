@@ -64,31 +64,31 @@ function skipTests(task) {
 }
 
 gulp.task('clean', function () {
-    return gulp.src([ target('/dist')
-                    , target('/ngAnnotate')
-                    , target('/test/')
-                    ], {
-            read: false
-        })
+    return gulp.src([target('/dist')
+        , target('/ngAnnotate')
+        , target('/test/')
+    ], {
+        read: false
+    })
         .pipe(clean());
 });
 
 gulp.task('lint', function () {
     return gulp.src([
-            'gulpfile.js',
-            'app/js/**/*.js',
-            'test/**/*.js',
-            '!app/js/third-party/**',
-            '!test/browserified/**',
-        ])
+        'gulpfile.js',
+        'app/js/**/*.js',
+        'test/**/*.js',
+        '!app/js/third-party/**',
+        '!test/browserified/**',
+    ])
         .pipe(eslint())
         .pipe(eslint.format());
 });
 
 gulp.task('unit', skipTests(function () {
     return gulp.src([
-            'test/unit/**/*.js'
-        ])
+        'test/unit/**/*.js'
+    ])
         .pipe(mocha({
             reporter: 'dot'
         }));
@@ -106,9 +106,9 @@ gulp.task('browserify', ['lint', 'unit'], function () {
 
 gulp.task('ngAnnotate', ['lint', 'unit'], function () {
     return gulp.src([
-            'app/js/**/*.js',
-            '!app/js/third-party/**',
-        ])
+        'app/js/**/*.js',
+        '!app/js/third-party/**',
+    ])
         .pipe(ngAnnotage())
         .pipe(gulp.dest(target('/ngAnnotate')));
 });

@@ -47,7 +47,7 @@ module.exports = function ($rootScope, Abbreviator, jolokia) {
                             } else {
                                 bean.nameProps[tokens[0]] = tokens[1];
                                 if ((tokens[0].toLowerCase() === 'type' || tokens[0].toLowerCase() ===
-                                        'j2eetype') && type.length === 0) {
+                                    'j2eetype') && type.length === 0) {
                                     type = tokens[1];
                                 }
                             }
@@ -61,7 +61,7 @@ module.exports = function ($rootScope, Abbreviator, jolokia) {
                                 bean.name += ' ';
                             }
                             bean.name += '[' + Abbreviator.abbreviate(type, '.', 25, 1,
-                                1) + ']';
+                                    1) + ']';
                         }
 
                         if (bean.name.length === 0) {

@@ -16,7 +16,7 @@
 'use strict';
 
 module.exports = function ($scope, $location, $interval, $q, Applications, ApplicationOverview,
-    Application) {
+                           Application) {
     $scope.loadData = function () {
         Applications.query(function (applications) {
             function refresh(app) {
@@ -33,8 +33,8 @@ module.exports = function ($scope, $location, $interval, $q, Applications, Appli
                 }
                 app.refreshing = true;
                 $q.all(ApplicationOverview.getInfo(app),
-                        ApplicationOverview.getHealth(app),
-                        ApplicationOverview.getLogfile(app))
+                    ApplicationOverview.getHealth(app),
+                    ApplicationOverview.getLogfile(app))
                     .finally(function () {
                         app.refreshing = false;
                     });

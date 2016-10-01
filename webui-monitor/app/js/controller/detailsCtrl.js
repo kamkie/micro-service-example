@@ -54,45 +54,45 @@ module.exports = function ($scope, $interval, application, ApplicationDetails, M
             MetricsHelper.find(metrics, [/gc\.(.+)\.time/, /gc\.(.+)\.count/,
                 /datasource\.(.+)\.active/, /datasource\.(.+)\.usage/
             ], [function (metric, match, value) {
-                    createOrGet($scope.gcInfos, match[1], function () {
-                            return {
-                                time: 0,
-                                count: 0
-                            };
-                        })
-                        .time = value;
-                },
+                createOrGet($scope.gcInfos, match[1], function () {
+                    return {
+                        time: 0,
+                        count: 0
+                    };
+                })
+                    .time = value;
+            },
                 function (metric, match, value) {
                     createOrGet($scope.gcInfos, match[1], function () {
-                            return {
-                                time: 0,
-                                count: 0
-                            };
-                        })
+                        return {
+                            time: 0,
+                            count: 0
+                        };
+                    })
                         .count = value;
                 },
                 function (metric, match, value) {
                     $scope.hasDatasources = true;
                     createOrGet($scope.datasources, match[1], function () {
-                            return {
-                                min: 0,
-                                max: 0,
-                                active: 0,
-                                usage: 0
-                            };
-                        })
+                        return {
+                            min: 0,
+                            max: 0,
+                            active: 0,
+                            usage: 0
+                        };
+                    })
                         .active = value;
                 },
                 function (metric, match, value) {
                     $scope.hasDatasources = true;
                     createOrGet($scope.datasources, match[1], function () {
-                            return {
-                                min: 0,
-                                max: 0,
-                                active: 0,
-                                usage: 0
-                            };
-                        })
+                        return {
+                            min: 0,
+                            max: 0,
+                            active: 0,
+                            usage: 0
+                        };
+                    })
                         .usage = value;
                 }
             ]);

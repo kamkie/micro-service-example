@@ -15,14 +15,14 @@
  */
 'use strict';
 
-module.exports = function() {
+module.exports = function () {
     return {
         restrict: 'E',
         scope: {
             metric: '=forMetric',
             globalMax: '=?globalMax'
         },
-        link: function(scope) {
+        link: function (scope) {
             scope.globalMax = scope.globalMax || scope.metric.max;
             scope.minWidth = (scope.metric.min / scope.globalMax * 100).toFixed(2);
             scope.avgWidth = (scope.metric.avg / scope.globalMax * 100).toFixed(2);

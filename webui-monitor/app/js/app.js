@@ -62,8 +62,8 @@ springBootAdmin.config(function ($stateProvider, $urlRouterProvider) {
             resolve: {
                 application: function ($stateParams, Application) {
                     return Application.query({
-                            id: $stateParams.id
-                        })
+                        id: $stateParams.id
+                    })
                         .$promise;
                 }
             }

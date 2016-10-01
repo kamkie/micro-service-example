@@ -23,31 +23,31 @@
  * look here where this is the case: http://caniuse.com/json)
  */
 
-(function() {
+(function () {
 
     var _jolokiaConstructorFunc = function ($) {
 
         // Default paramerters for GET and POST requests
         var DEFAULT_CLIENT_PARAMS = {
-            type:"POST",
-            jsonp:false
+            type: "POST",
+            jsonp: false
         };
 
         var GET_AJAX_PARAMS = {
-            type:"GET"
+            type: "GET"
         };
 
         var POST_AJAX_PARAMS = {
-            type:"POST",
-            processData:false,
-            dataType:"json",
-            contentType:"text/json"
+            type: "POST",
+            processData: false,
+            dataType: "json",
+            contentType: "text/json"
         };
 
         // Processing parameters which are added to the
         // URL as query parameters if given as options
         var PROCESSING_PARAMS = ["maxDepth", "maxCollectionSize", "maxObjects", "ignoreErrors", "canonicalNaming",
-                                 "serializeException", "includeStackTrace", "ifModifiedSince"];
+            "serializeException", "includeStackTrace", "ifModifiedSince"];
 
         /**
          * Constructor for creating a client to the Jolokia agent.
@@ -79,7 +79,7 @@
 
             // Allow a single URL parameter as well
             if (typeof param === "string") {
-                param = {url:param};
+                param = {url: param};
             }
             $.extend(agentOptions, DEFAULT_CLIENT_PARAMS, param);
 
@@ -224,7 +224,7 @@
                     var success_callback = constructCallbackDispatcher(opts.success);
                     var error_callback = constructCallbackDispatcher(opts.error);
                     ajaxParams.success = function (data) {
-                        var responses = $.isArray(data) ? data : [ data ];
+                        var responses = $.isArray(data) ? data : [data];
                         for (var idx = 0; idx < responses.length; idx++) {
                             var resp = responses[idx];
                             if (Jolokia.isError(resp)) {
@@ -282,12 +282,12 @@
              * @param request, request, .... One or more requests to be registered for this single callback
              * @return handle which can be used for unregistering the request again or for correlation purposes in the callbacks
              */
-            this.register = function() {
+            this.register = function () {
                 if (arguments.length < 2) {
                     throw "At a least one request must be provided";
                 }
                 var callback = arguments[0],
-                    requests = Array.prototype.slice.call(arguments,1),
+                    requests = Array.prototype.slice.call(arguments, 1),
                     job;
                 if (typeof callback === 'object') {
                     if (callback.success && callback.error) {
@@ -301,9 +301,9 @@
                         };
                     } else {
                         throw "Either 'callback' or ('success' and 'error') callback must be provided " +
-                              "when registering a Jolokia job";
+                        "when registering a Jolokia job";
                     }
-                    job = $.extend(job,{
+                    job = $.extend(job, {
                         config: callback.config,
                         onlyIfModified: callback.onlyIfModified
                     });
@@ -316,7 +316,7 @@
                     };
                 } else {
                     throw "First argument must be either a callback func " +
-                          "or an object with 'success' and 'error' attributes";
+                    "or an object with 'success' and 'error' attributes";
                 }
                 if (!requests) {
                     throw "No requests given";
@@ -332,7 +332,7 @@
              * the handle returned during the registration process must be given
              * @param handle
              */
-            this.unregister = function(handle) {
+            this.unregister = function (handle) {
                 if (handle < jobs.length) {
                     jobs[handle] = undefined;
                 }
@@ -342,7 +342,7 @@
              * Return an array of handles for currently registered jobs.
              * @return Array of job handles or an empty array
              */
-            this.jobs = function() {
+            this.jobs = function () {
                 var ret = [],
                     len = jobs.length;
                 for (var i = 0; i < len; i++) {
@@ -363,7 +363,7 @@
              *
              * @param interval interval in milliseconds between two polling attempts
              */
-            this.start = function(interval) {
+            this.start = function (interval) {
                 interval = interval || agentOptions.fetchInterval || 30000;
                 if (pollerIsRunning) {
                     if (interval === agentOptions.fetchInterval) {
@@ -374,7 +374,7 @@
                     this.stop();
                 }
                 agentOptions.fetchInterval = interval;
-                this.timerId = setInterval(callJolokia(this,jobs), interval);
+                this.timerId = setInterval(callJolokia(this, jobs), interval);
 
                 pollerIsRunning = true;
             };
@@ -382,7 +382,7 @@
             /**
              * Stop the poller. If the poller is not running, no operation is performed.
              */
-            this.stop = function() {
+            this.stop = function () {
                 if (!pollerIsRunning && this.timerId != undefined) {
                     return;
                 }
@@ -396,7 +396,7 @@
              * Check whether the poller is running.
              * @return true if the poller is running, false otherwise.
              */
-            this.isRunning = function() {
+            this.isRunning = function () {
                 return pollerIsRunning;
             };
 
@@ -409,8 +409,8 @@
 
         // Create a function called by a timer, which requests the registered requests
         // calling the stored callback on receipt. jolokia and jobs are put into the closure
-        function callJolokia(jolokia,jobs) {
-            return function() {
+        function callJolokia(jolokia, jobs) {
+            return function () {
                 var errorCbs = [],
                     successCbs = [],
                     i, j,
@@ -420,41 +420,43 @@
                     var job = jobs[i];
                     // Can happen when job has been deleted
                     // TODO: Can be probably optimized so that only the existing keys of jobs can be visited
-                    if (!job) { continue;  }
+                    if (!job) {
+                        continue;
+                    }
                     var reqsLen = job.requests.length;
                     if (job.success) {
                         // Success/error pair of callbacks. For multiple request,
                         // these callback will be called multiple times
-                        var successCb = cbSuccessClosure(job,i);
-                        var errorCb = cbErrorClosure(job,i);
+                        var successCb = cbSuccessClosure(job, i);
+                        var errorCb = cbErrorClosure(job, i);
                         for (j = 0; j < reqsLen; j++) {
-                            requests.push(prepareRequest(job,j));
+                            requests.push(prepareRequest(job, j));
                             successCbs.push(successCb);
                             errorCbs.push(errorCb);
                         }
                     } else {
                         // Job should have a single callback (job.callback) which will be
                         // called once with all responses at once as an array
-                        var callback = cbCallbackClosure(job,jolokia);
+                        var callback = cbCallbackClosure(job, jolokia);
                         // Add callbacks which collect the responses
                         for (j = 0; j < reqsLen - 1; j++) {
-                            requests.push(prepareRequest(job,j));
+                            requests.push(prepareRequest(job, j));
                             successCbs.push(callback.cb);
                             errorCbs.push(callback.cb);
                         }
                         // Add final callback which finally will call the job.callback with all
                         // collected responses.
-                        requests.push(prepareRequest(job,reqsLen-1));
+                        requests.push(prepareRequest(job, reqsLen - 1));
                         successCbs.push(callback.lcb);
                         errorCbs.push(callback.lcb);
                     }
                 }
                 var opts = {
                     // Dispatch to the build up callbacks, request by request
-                    success: function(resp, j) {
+                    success: function (resp, j) {
                         return successCbs[j].apply(jolokia, [resp, j]);
                     },
-                    error: function(resp, j) {
+                    error: function (resp, j) {
                         return errorCbs[j].apply(jolokia, [resp, j]);
                     }
                 };
@@ -463,11 +465,11 @@
         }
 
         // Prepare a request with the proper configuration
-        function prepareRequest(job,idx) {
+        function prepareRequest(job, idx) {
             var request = job.requests[idx],
                 config = job.config || {},
                 // Add the proper ifModifiedSince parameter if already called at least once
-                extra = job.onlyIfModified && job.lastModified ? { ifModifiedSince: job.lastModified } : {};
+                extra = job.onlyIfModified && job.lastModified ? {ifModifiedSince: job.lastModified} : {};
 
             request.config = $.extend({}, config, request.config, extra);
             return request;
@@ -475,28 +477,28 @@
 
         // Closure for a full callback which stores the responses in an (closed) array
         // which the finally is feed in to the callback as array
-        function cbCallbackClosure(job,jolokia) {
+        function cbCallbackClosure(job, jolokia) {
             var responses = [],
                 callback = job.callback,
                 lastModified = 0;
 
             return {
-                cb : addResponse,
-                lcb : function(resp,j) {
+                cb: addResponse,
+                lcb: function (resp, j) {
                     addResponse(resp);
                     // Callback is called only if at least one non-cached response
                     // is obtained. Update job's timestamp internally
                     if (responses.length > 0) {
                         job.lastModified = lastModified;
-                        callback.apply(jolokia,responses);
+                        callback.apply(jolokia, responses);
                     }
                 }
             };
 
-            function addResponse(resp,j) {
+            function addResponse(resp, j) {
                 // Only remember responses with values and remember lowest timetamp, too.
                 if (resp.status != 304) {
-                    if (lastModified == 0 || resp.timestamp < lastModified ) {
+                    if (lastModified == 0 || resp.timestamp < lastModified) {
                         lastModified = resp.timestamp;
                     }
                     responses.push(resp);
@@ -507,26 +509,26 @@
         // Own function for creating a closure to avoid reference to mutable state in the loop
         function cbErrorClosure(job, i) {
             var callback = job.error;
-            return function(resp,j) {
+            return function (resp, j) {
                 // If we get a "304 - Not Modified" 'error', we do nothing
                 if (resp.status == 304) {
                     return;
                 }
                 if (callback) {
-                    callback(resp,i,j)
+                    callback(resp, i, j)
                 }
             }
         }
 
         function cbSuccessClosure(job, i) {
             var callback = job.success;
-            return function(resp,j) {
+            return function (resp, j) {
                 if (callback) {
                     // Remember last success callback
                     if (job.onlyIfModified) {
                         job.lastModified = resp.timestamp;
                     }
-                    callback(resp,i,j)
+                    callback(resp, i, j)
                 }
             }
         }
@@ -543,7 +545,7 @@
                 return function () {
                 };
             }
-            var callbackArray = $.isArray(callback) ? callback : [ callback ];
+            var callbackArray = $.isArray(callback) ? callback : [callback];
             return function (response, idx) {
                 callbackArray[idx % callbackArray.length](response, idx);
             }
@@ -554,7 +556,7 @@
         // to the request given
         function extractMethod(request, opts) {
             var methodGiven = opts && opts.method ? opts.method.toLowerCase() : null,
-                    method;
+                method;
             if (methodGiven) {
                 if (methodGiven === "get") {
                     if ($.isArray(request)) {
@@ -574,10 +576,10 @@
             } else {
                 // Determine method dynamically
                 method = $.isArray(request) ||
-                         request.config ||
-                         (request.type.toLowerCase() === "read" && $.isArray(request.attribute)) ||
-                         request.target ?
-                        "post" : "get";
+                request.config ||
+                (request.type.toLowerCase() === "read" && $.isArray(request.attribute)) ||
+                request.target ?
+                    "post" : "get";
             }
             if (opts.jsonp && method === "post") {
                 throw new Error("Can not use JSONP with POST requests");
@@ -636,34 +638,34 @@
         // The return value is an object with two properties: The 'parts' to glue together, where
         // each part gets escaped and a 'path' which is appended literally
         var GET_URL_EXTRACTORS = {
-            "read":function (request) {
+            "read": function (request) {
                 if (request.attribute == null) {
                     // Path gets ignored for multiple attribute fetch
-                    return { parts:[ request.mbean, '*' ], path:request.path };
+                    return {parts: [request.mbean, '*'], path: request.path};
                 } else {
-                    return { parts:[ request.mbean, request.attribute ], path:request.path };
+                    return {parts: [request.mbean, request.attribute], path: request.path};
                 }
             },
-            "write":function (request) {
-                return { parts:[request.mbean, request.attribute, valueToString(request.value)], path:request.path};
+            "write": function (request) {
+                return {parts: [request.mbean, request.attribute, valueToString(request.value)], path: request.path};
             },
-            "exec":function (request) {
-                var ret = [ request.mbean, request.operation ];
+            "exec": function (request) {
+                var ret = [request.mbean, request.operation];
                 if (request.arguments && request.arguments.length > 0) {
                     $.each(request.arguments, function (index, value) {
                         ret.push(valueToString(value));
                     });
                 }
-                return {parts:ret};
+                return {parts: ret};
             },
-            "version":function () {
+            "version": function () {
                 return {};
             },
-            "search":function (request) {
-                return { parts:[request.mbean]};
+            "search": function (request) {
+                return {parts: [request.mbean]};
             },
-            "list":function (request) {
-                return { path:request.path};
+            "list": function (request) {
+                return {path: request.path};
             }
         };
 
@@ -701,8 +703,8 @@
         function httpSuccess(xhr) {
             try {
                 return !xhr.status && location.protocol === "file:" ||
-                       xhr.status >= 200 && xhr.status < 300 ||
-                       xhr.status === 304 || xhr.status === 1223;
+                    xhr.status >= 200 && xhr.status < 300 ||
+                    xhr.status === 304 || xhr.status === 1223;
             } catch (e) {
             }
             return false;
@@ -729,7 +731,7 @@
          * @param resp response to check
          * @return true if response is an error, false otherwise
          */
-        Jolokia.prototype.isError = Jolokia.isError = function(resp) {
+        Jolokia.prototype.isError = Jolokia.isError = function (resp) {
             return resp.status == null || resp.status != 200;
         };
 

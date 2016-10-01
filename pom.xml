@@ -198,6 +198,42 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>0.1</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>highest-basedir</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <property>main.basedir</property>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>net.revelc.code</groupId>
+                <artifactId>formatter-maven-plugin</artifactId>
+                <version>0.5.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configFile>${main.basedir}/spotless.eclipseformat.xml</configFile>
+                    <directories>
+                        <directory>${project.build.sourceDirectory}</directory>
+                        <directory>${project.build.directory}/generated-sources</directory>
+                    </directories>
+                </configuration>
+            </plugin>
+            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <allowTimestampedSnapshots>true</allowTimestampedSnapshots>

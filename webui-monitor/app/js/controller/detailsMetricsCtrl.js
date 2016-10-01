@@ -40,36 +40,37 @@ module.exports = function ($scope, application, ApplicationDetails, Abbreviator,
                 /(gauge\..+)\.avg/, /(gauge\..+)\.min/, /(gauge\..+)\.max/,
                 /(gauge\..+)\.count/, /(gauge\..+)\.alpha/, /(gauge\..+)/
             ], [function (metric, match, value) {
-                    $scope.counters.push({ name: metric, value: value });
-                    if (value > $scope.countersMax) {
-                        $scope.countersMax = value;
-                    }
-                },
+                $scope.counters.push({name: metric, value: value});
+                if (value > $scope.countersMax) {
+                    $scope.countersMax = value;
+                }
+            },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], value: value });
+                    merge($scope.gauges, {name: match[1], value: value});
                     $scope.showRichGauges = true;
                     if (value > $scope.gaugesMax) {
                         $scope.gaugesMax = value;
                     }
                 },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], avg: value.toFixed(2) });
+                    merge($scope.gauges, {name: match[1], avg: value.toFixed(2)});
                 },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], min: value });
+                    merge($scope.gauges, {name: match[1], min: value});
                 },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], max: value });
+                    merge($scope.gauges, {name: match[1], max: value});
                     if (value > $scope.gaugesMax) {
                         $scope.gaugesMax = value;
                     }
                 },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], count: value });
+                    merge($scope.gauges, {name: match[1], count: value});
                 },
-                function () { /*NOP*/ },
+                function () { /*NOP*/
+                },
                 function (metric, match, value) {
-                    merge($scope.gauges, { name: match[1], value: value });
+                    merge($scope.gauges, {name: match[1], value: value});
                     if (value > $scope.gaugesMax) {
                         $scope.gaugesMax = value;
                     }

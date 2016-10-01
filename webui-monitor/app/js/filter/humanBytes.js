@@ -15,14 +15,15 @@
  */
 'use strict';
 
-module.exports = function() {
-    var units = { B: Math.pow(1024, 0)
-                , K: Math.pow(1024, 1)
-                , M: Math.pow(1024, 2)
-                , G: Math.pow(1024, 3)
-                , T: Math.pow(1024, 4)
-                , P: Math.pow(1024, 5)
-                };
+module.exports = function () {
+    var units = {
+        B: Math.pow(1024, 0)
+        , K: Math.pow(1024, 1)
+        , M: Math.pow(1024, 2)
+        , G: Math.pow(1024, 3)
+        , T: Math.pow(1024, 4)
+        , P: Math.pow(1024, 5)
+    };
 
     return function (input, unit) {
         input = input || 0;

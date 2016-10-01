@@ -60,7 +60,7 @@ module.exports = function ($scope, $modal, $log, application, ApplicationJMX) {
         $scope.invocation.state = 'executing';
 
         ApplicationJMX.invoke(application, $scope.invocation.bean, $scope.invocation.opname,
-                $scope.invocation.args)
+            $scope.invocation.args)
             .then(
                 function (response) {
                     $scope.invocation.state = 'success';
@@ -73,12 +73,12 @@ module.exports = function ($scope, $modal, $log, application, ApplicationJMX) {
             });
 
         $modal.open({
-                templateUrl: 'invocationResultDialog.html',
-                scope: $scope
-            })
+            templateUrl: 'invocationResultDialog.html',
+            scope: $scope
+        })
             .result.then(function () {
-                $scope.invocation = null;
-            });
+            $scope.invocation = null;
+        });
     };
 
     $scope.prepareInvoke = function (bean, name, op) {
@@ -92,12 +92,12 @@ module.exports = function ($scope, $modal, $log, application, ApplicationJMX) {
 
         if (op instanceof Array) {
             $modal.open({
-                    templateUrl: 'invocationVariantDialog.html',
-                    scope: $scope
-                })
+                templateUrl: 'invocationVariantDialog.html',
+                scope: $scope
+            })
                 .result.then(function (chosenOp) {
-                    $scope.prepareInvoke(bean, name, chosenOp);
-                })
+                $scope.prepareInvoke(bean, name, chosenOp);
+            })
                 .catch(function () {
                     $scope.invocation = null;
                 });
@@ -117,12 +117,12 @@ module.exports = function ($scope, $modal, $log, application, ApplicationJMX) {
                 $scope.invocation.opname = name + signature;
 
                 $modal.open({
-                        templateUrl: 'invocationPrepareDialog.html',
-                        scope: $scope
-                    })
+                    templateUrl: 'invocationPrepareDialog.html',
+                    scope: $scope
+                })
                     .result.then(function () {
-                        $scope.invoke();
-                    })
+                    $scope.invoke();
+                })
                     .catch(function () {
                         $scope.invocation = null;
                     });

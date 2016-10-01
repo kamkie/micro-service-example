@@ -25,7 +25,7 @@ module.exports = function () {
             var name = input[j].name;
             var i = name.lastIndexOf('.') + 1;
             if (name.charAt(i) === name.charAt(i)
-                .toUpperCase()) {
+                    .toUpperCase()) {
                 result.push(input[j]);
             }
         }

@@ -1,18 +1,18 @@
 exports.config = {
 
-  chromeOnly: true,
-  chromeDriver: './node_modules/protractor/selenium/chromedriver',
+    chromeOnly: true,
+    chromeDriver: './node_modules/protractor/selenium/chromedriver',
 
-  capabilities: {
-    'browserName': 'chrome'
-  },
+    capabilities: {
+        'browserName': 'chrome'
+    },
 
-  specs: ['test/e2e/**/*_spec.js'],
+    specs: ['test/e2e/**/*_spec.js'],
 
-  rootElement: '.content',
+    rootElement: '.content',
 
-  jasmineNodeOpts: {
-    showColors: true,
-    defaultTimeoutInterval: 30000
-  }
+    jasmineNodeOpts: {
+        showColors: true,
+        defaultTimeoutInterval: 30000
+    }
 };

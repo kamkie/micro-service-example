@@ -30,7 +30,7 @@ module.exports = function ($scope, application, ApplicationThreads) {
                     TERMINATED: 0
                 };
                 for (var i = 0; i < dump.length; i++) {
-                    threadStats[dump[i].threadState] ++;
+                    threadStats[dump[i].threadState]++;
                 }
                 threadStats.total = dump.length;
                 $scope.threadStats = threadStats;
