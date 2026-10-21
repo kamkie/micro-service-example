@@ -35,8 +35,8 @@
         <spring.bom.version>1.1.0.RELEASE</spring.bom.version>
         <spring.boot.version>1.2.3.RELEASE</spring.boot.version>
         <spring.loaded.version>1.2.3.RELEASE</spring.loaded.version>
-        <spring.cloud.version>1.0.1.RELEASE</spring.cloud.version>
-        <camel.version>3.2.0</camel.version>
+        <spring.cloud.version>4.3.3</spring.cloud.version>
+        <camel.version>3.21.4</camel.version>
         <resthub.version>2.2.0</resthub.version>
     </properties>
 
@@ -108,7 +108,7 @@
             <dependency>
                 <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
-                <version>3.2.0</version>
+                <version>5.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.webjars</groupId>
