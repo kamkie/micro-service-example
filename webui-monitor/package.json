@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "es5-shim": "^3.0.2",
-    "jquery": "~2.1.1",
+    "jquery": "~4.0.0",
     "angular-ui-router": "~0.2.11",
     "angular-resource": "~1.2.27",
     "angular-route": "~1.2.27",
-    "angular": "~1.2.27"
+    "angular": "~1.8.3"
   },
   "devDependencies": {
     "browserify": "^3.44.2",
@@ -29,7 +29,7 @@
     "gulp-mocha": "~2.0.0",
     "gulp-shell": "~0.2.10",
     "gulp-ng-annotate": "~0.4.0",
-    "karma": "^0.12.16",
+    "karma": "^6.4.4",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.4",
     "karma-firefox-launcher": "^0.1.3",
